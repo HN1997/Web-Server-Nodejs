@@ -10,7 +10,10 @@ var server = http.createServer(function(req,res) {
 
 
   var fullurl = req.url;
+
+
   var q = url.parse('http://localhost:3000' + fullurl + "\n");
+
 
 
 
@@ -21,9 +24,9 @@ var server = http.createServer(function(req,res) {
     res.write('Hello Web Server with Nodejs!\n');
     res.write('Host : ' + q.host + "\n");
     res.write('Path name : ' + q.pathname + "\n");
-    res.write('Search : ' + q.search + "\n");
+    res.write('Search : ' + (q.search).replace("?","/") + "\n");
     res.write("You are in the channel page ! \n\n");
-    res.write("You are in the channel : " + q.search +"\n");
+    res.write("You are in the channel : " + (q.search).replace("?","/") +"\n");
 
 
 
