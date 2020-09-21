@@ -9,4 +9,6 @@
 ## Usage instructions
 
 ## Author information
+Pierre CAMUGLI
 
+Hugo NAVILLOD
