@@ -6,27 +6,34 @@ var url = require('url');
 var fs = require('fs');
 
 var server = http.createServer(function(req,res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.write('Hello Web Server with Nodejs!\n');
+
+
 
   var fullurl = req.url;
   var q = url.parse('http://localhost:3000' + fullurl + "\n");
-  res.write('Host : ' + q.host + "\n");
-  res.write('Path name : ' + q.pathname + "\n");
-  res.write('Search : ' + q.search + "\n");
 
-  if(q.pathname == '/HelloWorld')
+
+
+  if(q.pathname == '/channel')
   {
-    res.write("Hello world ! \n");
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+
+    res.write('Hello Web Server with Nodejs!\n');
+    res.write('Host : ' + q.host + "\n");
+    res.write('Path name : ' + q.pathname + "\n");
+    res.write('Search : ' + q.search + "\n");
+    res.write("You are in the channel page ! \n\n");
+    res.write("You are in the channel : " + q.search +"\n");
+
+
+
   }
   else {
-    res.write("I don't know this page, sorry!\n");
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.write('Error 404 : Page not found');
   }
 
-  if(q.search == '?country=France')
-  {
-    res.write("We are in France at ECE Paris!\n");
-  }
+
 
 
   res.end();
