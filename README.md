@@ -14,8 +14,8 @@ This is our homework. This project allows you to create a simple Web server with
 4) Go to your favorite web browser and enter : http://localhost:3000/
 
 ## Usage instructions
-- If you enter the url "http://localhost:3000/HelloWorld" a "Hello World!" message will appear.
-- If you enter the url "http://localhost:3000/HelloWorld?country=France" a "We are in France at ECE Paris" message will appear.
+- If you enter the url "http://localhost:3000/channel" you enter a new web page, else an error 404 occurs.
+- If you enter the url "http://localhost:3000/channel?id=432" you enter a new web page where it displays the id.
 
 
 ## Author information
