@@ -1,0 +1,16 @@
+{
+  "name": "basic-server-nodejs",
+  "version": "1.0.0",
+  "description": "This is a basic server creation with nodejs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha 'test/**/*.js*'\""
+  },
+  "keywords": [
+    "Web",
+    "Server",
+    "Nodejs"
+  ],
+  "author": "Hugo Navillod, Pierre Camugli",
+  "license": "ISC"
+}
