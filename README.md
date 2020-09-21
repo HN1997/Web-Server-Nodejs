@@ -8,8 +8,10 @@ This is our homework. This project allows you to create a simple Web server with
 - test
 
 ## Installation instructions
+1) Install nodejs, npm and express
 
 ## Usage instructions
+
 
 ## Author information
 ECE 4Y - SI Grp3
