@@ -7,15 +7,9 @@ var fs = require('fs');
 
 var server = http.createServer(function(req,res) {
 
-
-
   var fullurl = req.url;
 
-
   var q = url.parse('http://localhost:3000' + fullurl + "\n");
-
-
-
 
   if(q.pathname == '/channel')
   {
@@ -27,18 +21,11 @@ var server = http.createServer(function(req,res) {
     res.write('Search : ' + (q.search).replace("?","/") + "\n");
     res.write("You are in the channel page ! \n\n");
     res.write("You are in the channel : " + (q.search).replace("?","/") +"\n");
-
-
-
   }
   else {
     res.writeHead(404, {'Content-Type': 'text/plain'});
     res.write('Error 404 : Page not found');
   }
-
-
-
-
   res.end();
 })
 
