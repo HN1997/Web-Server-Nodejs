@@ -1,39 +1,46 @@
-const http = require('http');
-const port = 3000;
+const express = require('express')
+const app = express()
+const config = {
+  port: 3000
+}
+const db = {
+  channels: [{
+    id: '1',
+    name: 'Channel 1',
+  },{
+    id: '2',
+    name: 'Channel 2',
+  },{
+    id: '3',
+    name: 'Channel 3',
+  }]
+}
 
-
-var url = require('url');
-var fs = require('fs');
-
-var server = http.createServer(function(req,res) {
-
-  var fullurl = req.url;
-
-  var q = url.parse('http://localhost:3000' + fullurl + "\n");
-
-  if(q.pathname == '/channel')
-  {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-
-    res.write('Hello Web Server with Nodejs!\n');
-    res.write('Host : ' + q.host + "\n");
-    res.write('Path name : ' + q.pathname + "\n");
-    res.write('Search : ' + (q.search).replace("?","/") + "\n");
-    res.write("You are in the channel page ! \n\n");
-    res.write("You are in the channel : " + (q.search).replace("?","/") +"\n");
-  }
-  else {
-    res.writeHead(404, {'Content-Type': 'text/plain'});
-    res.write('Error 404 : Page not found');
-  }
-  res.end();
+app.get('/', (req, res) => {
+  res.send([
+    '<h1>ECE DevOps Chat</h1>',
+    '<p><a href="/channels">channels</a></p>'
+  ].join(''))
 })
 
-server.listen(port, function(error){
-  if(error)
-  {
-    console.log("Error", error);
-  } else {
-    console.log('Server is listening on port ' + port);
-  }
+app.get('/channels', (req, res) => {
+  html = [
+    '<h1>Channels</h1>',
+    '<ul>',
+    ...db.channels.map( channel => `<li><a href="/channel/${channel.id}">${channel.name}</a></li>`),
+    '</ul>',
+  ].join('')
+  res.send(html)
+})
+
+app.get('/channel/:id', (req, res) => {
+  res.send([
+    '<h1>',
+    db.channels.find( channel => channel.id === req.params.id ).name,
+    '</h1>',
+  ].join(''))
+})
+
+app.listen(config.port, () => {
+  console.log(`Chat is waiting for you at http://localhost:${config.port}`)
 })
