@@ -1,0 +1,7 @@
+2020/10/06-18:05:18.512432 7fda39ffb700 Recovering log #16
+2020/10/06-18:05:18.512486 7fda39ffb700 Level-0 table #18: started
+2020/10/06-18:05:18.520613 7fda39ffb700 Level-0 table #18: 184 bytes OK
+2020/10/06-18:05:18.521787 7fda39ffb700 Delete type=0 #16
+2020/10/06-18:05:18.521804 7fda39ffb700 Delete type=3 #14
+2020/10/06-18:05:18.521904 7fda2b7fe700 Compacting 4@0 + 0@1 files
+2020/10/06-18:05:18.522445 7fda2b7fe700 compacted to: files[ 4 0 0 0 0 0 0 ]
