@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Route} from 'react-router-dom';
-
 import Join from './components/Join';
 import Chat from './components/Chat';
 
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 /*
   When the use first come on the page, he is going to be greated
@@ -14,10 +13,12 @@ import Chat from './components/Chat';
   rendered.
 */
 const App = () => {
-  <Router>
-    <Route path="/" exact component={join} />
-    <Route path="/chat" component={chat} />
-  </Router>
-}
+    return(
+      <Router>
+        <Route path="/" exact component={Join} />
+        <Route path="/chat" component={Chat} />
+      </Router>
+    );
+};
 
 export default App;
