@@ -53,7 +53,8 @@ class Game extends React.Component {
         }
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      movesColRow: [], //Location for each move (col, row)
     };
   }
 
@@ -61,6 +62,8 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
+    const movesColRow = this.state.movesColRow;
+
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
@@ -72,7 +75,8 @@ class Game extends React.Component {
         }
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+      xIsNext: !this.state.xIsNext,
+      movesColRow: movesColRow.concat([MovesLocation(i)]), //depending on which square we click, we return the position
     });
   }
 
@@ -87,10 +91,11 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
+    const movesColRow = this.state.movesColRow;
 
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
+        'Go to move #' + move + movesColRow[move-1]:
         'Go to game start';
       return (
         <li key={move}>
@@ -145,4 +150,48 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+
+function MovesLocation(i)
+{
+  if(i===0)
+  {
+    return " played at (row, col) = (1,1)";
+  }
+  else if(i === 1)
+  {
+    return " played at (row, col) = (1,2)";
+  }
+  else if(i === 2)
+  {
+    return " played at (row, col) = (1,3)";
+  }
+  else if(i === 3)
+  {
+    return " played at (row, col) = (2,1)";
+  }
+  else if(i === 4)
+  {
+    return " played at (row, col) = (2,2)";
+  }
+  else if(i === 5)
+  {
+    return " played at (row, col) = (2,3)";
+  }
+  else if(i === 6)
+  {
+    return " played at (row, col) = (3,1)";
+  }
+  else if(i === 7)
+  {
+    return " played at (row, col) = (3,2)";
+  }
+  else if(i === 8)
+  {
+    return " played at (row, col) = (3,3)";
+  }
+  else {
+    return "ERROR";
+  }
 }
