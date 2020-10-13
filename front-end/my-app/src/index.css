@@ -1,0 +1,8 @@
+.currentlySelectedSquare{
+  font-weight: bold;
+}
+
+.winningSquares{
+  font-weight: bold;
+  color: red;
+}
