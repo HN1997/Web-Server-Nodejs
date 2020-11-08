@@ -3,6 +3,11 @@ import './App.css';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 
+//For transforming markdown to html
+import unified from 'unified'
+import parse from 'remark-parse'
+import remark2react from 'remark-react'
+
 //Moment.js library - deprecated
 //it's slow
 //it's heavey
@@ -23,7 +28,6 @@ let month = today.get('month');
 let year = today.get('year');
 let hour = today.get('hour');
 let minute = today.get('minute');
-console.log(minute);
 
 
 const styles = {
@@ -138,12 +142,18 @@ export default ({
   }
 }) => {
   const [messages, setMessages] = useState([])
+
+  //A text in markdown
+  const someText = "# Hello world!";
+  const someText2 = "*Try markdown with stars before and after your message*"
+
   const addMessage = (message) => {
     setMessages([
       ...messages,
       message
     ])
   }
+
   return (
     <div className="App" css={styles.root}>
       <header className="App-header" css={styles.header}>
@@ -152,10 +162,32 @@ export default ({
       <main className="App-main" css={styles.main}>
         <div css={styles.channels}>
           <h5 align="center">List of the channels:</h5>
+          <div>
+            <ul>
+              <li>
+              {channel.name}
+              </li>
+            </ul>
+          </div>
         </div>
         <div css={styles.channel}>
           <div css={styles.messages}>
             <h1 align="center">Connected in the channel: {channel.name}</h1>
+            <div>
+                Some text in markdown:
+                {
+                  unified()
+                    .use(parse)
+                    .use(remark2react)
+                    .processSync(someText).result
+                }
+                {
+                  unified()
+                    .use(parse)
+                    .use(remark2react)
+                    .processSync(someText2).result
+                }
+            </div>
             <div className="chatMessage">
               { messages.map( (message, i) => (
                 <li key={i} css={styles.message}>
@@ -166,10 +198,10 @@ export default ({
                   </p>
                   <div className="chatMessage">
                     {
-                      message.content
-                      .split(/(\n +\n)/)
-                      .filter( el => el.trim() )
-                      .map( el => <p>{el}</p>)
+                      unified()
+                      .use(parse)
+                      .use(remark2react)
+                      .processSync(message.content).result
                     }
                   </div>
                 </li>
