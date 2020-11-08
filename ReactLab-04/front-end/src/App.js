@@ -8,6 +8,10 @@ import unified from 'unified'
 import parse from 'remark-parse'
 import remark2react from 'remark-react'
 
+//Importing components
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
 //Moment.js library - deprecated
 //it's slow
 //it's heavey
@@ -41,21 +45,11 @@ const styles = {
   chatMessage: {
     backgroundColor: '#db2323',
   },
-  header: {
-    height: '60px',
-    backgroundColor: '#5977af',
-    flexShrink: 0,
-  },
   headerLogIn: {
     backgroundColor: 'red',
   },
   headerLogOut: {
     backgroundColor: 'blue',
-  },
-  footer: {
-    height: '30px',
-    backgroundColor: '#5977af',
-    flexShrink: 0,
   },
   main: {
     backgroundColor: '#afb2b5',
@@ -136,6 +130,8 @@ const MessageForm = ({
   )
 }
 
+
+
 export default ({
   channel = {
     name: 'Fake channel'
@@ -156,9 +152,7 @@ export default ({
 
   return (
     <div className="App" css={styles.root}>
-      <header className="App-header" css={styles.header}>
-        <h1 align="center">Welcome to the chat !</h1>
-      </header>
+      <Header />
       <main className="App-main" css={styles.main}>
         <div css={styles.channels}>
           <h5 align="center">List of the channels:</h5>
@@ -211,9 +205,7 @@ export default ({
           <MessageForm addMessage={addMessage} />
         </div>
       </main>
-      <footer className="App-footer" style={styles.footer}>
-        Connected as : David
-      </footer>
+      <Footer/>
     </div>
   );
 }
