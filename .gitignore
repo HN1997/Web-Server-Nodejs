@@ -1,4 +1,4 @@
 /node_modules
-Chat-App/
+/Chat-App
 .*
 !.gitignore
