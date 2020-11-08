@@ -3,10 +3,27 @@ import './App.css';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 
-//Moment.js library
+//Moment.js library - deprecated
+//it's slow
+//it's heavey
+//it's mutable ?
+//it's hard to debug
+//uncomment the following to use moment
+/*
 const moment = require('moment');
 let val;
-val = moment().format('DD-MM-YYYY, h:mm');
+val = moment().format('h:mm, DD-MM-YYYY');
+*/
+
+//Instead we will use Luxon
+const {DateTime} = require('luxon');
+let today = DateTime.local();
+let day =today.get('day');
+let month = today.get('month');
+let year = today.get('year');
+let hour = today.get('hour');
+let minute = today.get('minute');
+console.log(minute);
 
 
 const styles = {
@@ -18,7 +35,7 @@ const styles = {
     padding: '50px',
   },
   chatMessage: {
-    backgroundColor: '#fcfcfc',
+    backgroundColor: '#db2323',
   },
   header: {
     height: '60px',
@@ -102,7 +119,7 @@ const MessageForm = ({
     const data = new FormData(e.target)
     addMessage({
       content: data.get('content'),
-      author: 'david',
+      author: 'David',
       creation: Date.now(),
     })
     e.target.elements.content.value = ''
@@ -130,11 +147,11 @@ export default ({
   return (
     <div className="App" css={styles.root}>
       <header className="App-header" css={styles.header}>
-        <h1 align="center">Welcome to the chat!</h1>
+        <h1 align="center">Welcome to the chat !</h1>
       </header>
       <main className="App-main" css={styles.main}>
         <div css={styles.channels}>
-          <h5>List of the channels:</h5>
+          <h5 align="center">List of the channels:</h5>
         </div>
         <div css={styles.channel}>
           <div css={styles.messages}>
@@ -145,9 +162,9 @@ export default ({
                   <p>
                     <span>{message.author}</span>
                     {' '}
-                    <span>at: {val}</span>
+                    <span>(sent a message at {hour}:{minute}, {day}/{month}/{year}):</span>
                   </p>
-                  <div>
+                  <div className="chatMessage">
                     {
                       message.content
                       .split(/(\n +\n)/)
@@ -163,7 +180,7 @@ export default ({
         </div>
       </main>
       <footer className="App-footer" style={styles.footer}>
-        Connected as : david
+        Connected as : David
       </footer>
     </div>
   );
