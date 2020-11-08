@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 //importing css
 import './Join.css';
 
-const Join = () => {
+export default function SignIn() {
     //hooks here : variable name, function setName
     //passing it an empty string as initial value for our
     //name state
@@ -27,4 +27,3 @@ const Join = () => {
     )
 }
 
-export default Join;

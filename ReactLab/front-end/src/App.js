@@ -3,17 +3,26 @@ import './App.css';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 
+//Moment.js library
+const moment = require('moment');
+let val;
+val = moment().format('DD-MM-YYYY, h:mm');
+
+
 const styles = {
   root: {
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#565E71',
+    backgroundColor: '#262626',
     padding: '50px',
+  },
+  chatMessage: {
+    backgroundColor: '#fcfcfc',
   },
   header: {
     height: '60px',
-    backgroundColor: 'rgba(255,255,255,.3)',
+    backgroundColor: '#5977af',
     flexShrink: 0,
   },
   headerLogIn: {
@@ -24,17 +33,18 @@ const styles = {
   },
   footer: {
     height: '30px',
-    backgroundColor: 'rgba(255,255,255,.3)',
+    backgroundColor: '#5977af',
     flexShrink: 0,
   },
   main: {
-    backgroundColor: '#373B44',
+    backgroundColor: '#afb2b5',
     flex: '1 1 auto',
     display: 'flex',
     flexDirection: 'row',
     overflow: 'hidden',
   },
   channels: {
+    backgroundColor: '#717375',
     minWidth: '200px',
   },
   channel: {
@@ -82,7 +92,6 @@ const styles = {
       color: '#fff',
     },
   },
-  
 }
 
 const MessageForm = ({
@@ -111,82 +120,7 @@ export default ({
     name: 'Fake channel'
   }
 }) => {
-  const [messages, setMessages] = useState([{
-    author: 'sergei',
-    creation: 1602831101929,
-    content: `
-    ## 1 - Architecture - Level easy
-    
-    It is now the right time to re-organize/refactor our code. Split this
-    monolithic react Component into multiple section. In the end, we should end
-    up with the following components: 'Header', 'Footer', 'Main', 'Channels',
-    'Channel', 'Messages', 'MessageSend':
-    
-    - 'App.js' file uses 'Header.js', 'Main.js', 'Footer.js'
-    - 'Main.js' file uses 'Channels.js', 'Channel.js'
-    - 'Channels.js' prints the list of channels
-    - 'Channel.js' prints the messages, uses 'Messages.js' and 'MessageSend.js'
-    - 'Messages.js' prints the list of messages inside the current channel
-    - 'MessageForm.js' send a new message
-    
-    \`\`\`
-    +--------------------------------------------+
-    |                  Header                    |
-    +--------------------------------------------+
-    |   Channels    |          Channel           |
-    |               | +------------------------+ |
-    |               | |        Messages        | |
-    |               | +------------------------+ |
-    |               | |      MessageSend       | |
-    |               | +------------------------+ |
-    +--------------------------------------------+
-    |                  Footer                    |
-    +--------------------------------------------+
-    \`\`\`
-    `,
-  },{
-    author: 'david',
-    creation: 1602832138892,
-    content: `
-    ## 2 - Styles - Level easy
-    
-    Give it some styles, use CSS to make it looks good. Possible source of
-    improvements include changing the colors, replacing the HTML "send" button
-    with an icon, working on the header, providing day/night themes ... be creative
-    `,
-  },{
-    author: 'sergei',
-    creation: 1602840139202,
-    content: `
-    ## 3 - Use an external library - Level medium
-    
-    Format the date in a human readable format. While the date is generated on
-    the server side to ensure its relevance and prevent from forgery, it must be
-    displayed according to the user browser local. The
-    [Moment.js](https://momentjs.com/) library has been the library of choice
-    for many years to accomplish date formatting. Read what is displayed on the
-    top right corner of their homepage, it is now depreciated. Read the reasons
-    and act accordingly.
-    `,
-  },{
-    author: 'david',
-    creation: 1602844139200,
-    content: `
-    ## 4 - Support message contents in Markdown - Level hard
-    
-    Markdown is the most popular syntax to format text into HTML. It is used
-    by the majority of the project Readme files, to write documentation and to
-    generate websites.
-    
-    I recommand you to use the [unified](https://unifiedjs.com/) which is very
-    powerful and comes with a lot of plugins. You can read the Markdown to HTML
-    guide in the learn section and enrich it with your selection of relevant
-    plugins.
-    
-    Consider adding syntax highlight support with a library like
-    [Prism](https://prismjs.com/).
-    `,
-  }])
+  const [messages, setMessages] = useState([])
   const addMessage = (message) => {
     setMessages([
       ...messages,
@@ -196,21 +130,22 @@ export default ({
   return (
     <div className="App" css={styles.root}>
       <header className="App-header" css={styles.header}>
-        <h1>header</h1>
+        <h1 align="center">Welcome to the chat!</h1>
       </header>
       <main className="App-main" css={styles.main}>
         <div css={styles.channels}>
+          <h5>List of the channels:</h5>
         </div>
         <div css={styles.channel}>
           <div css={styles.messages}>
-            <h1>Messages for {channel.name}</h1>
-            <ul>
+            <h1 align="center">Connected in the channel: {channel.name}</h1>
+            <div className="chatMessage">
               { messages.map( (message, i) => (
                 <li key={i} css={styles.message}>
                   <p>
                     <span>{message.author}</span>
                     {' '}
-                    <span>{(new Date(message.creation)).toString()}</span>
+                    <span>at: {val}</span>
                   </p>
                   <div>
                     {
@@ -222,13 +157,13 @@ export default ({
                   </div>
                 </li>
               ))}
-            </ul>
+            </div>
           </div>
           <MessageForm addMessage={addMessage} />
         </div>
       </main>
       <footer className="App-footer" style={styles.footer}>
-        footer
+        Connected as : david
       </footer>
     </div>
   );

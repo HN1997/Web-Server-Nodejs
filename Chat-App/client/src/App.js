@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 //Get Join and Chat from the components folder
 import Join from './components/Join/Join';
 import Chat from './components/Chat/Chat';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 //When the user comes to the page (/)
 //He will be greeted with our Join component
