@@ -45,12 +45,6 @@ const styles = {
   chatMessage: {
     backgroundColor: '#db2323',
   },
-  headerLogIn: {
-    backgroundColor: 'red',
-  },
-  headerLogOut: {
-    backgroundColor: 'blue',
-  },
   main: {
     backgroundColor: '#afb2b5',
     flex: '1 1 auto',
