@@ -1,0 +1,22 @@
+.messages {
+    flex: '1 1 auto';
+    height: '100%';
+    overflow: 'auto';
+}
+
+.chatMessage {
+    background-color: #db2323,
+}
+
+.message {
+    margin: .2rem;
+    padding: .2rem;
+    background-color: #66728E;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: 0;
+}

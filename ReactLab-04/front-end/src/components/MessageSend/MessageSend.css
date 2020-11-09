@@ -1,0 +1,17 @@
+.form {
+    border-top: 2px solid #373B44;
+    padding: .5rem;
+    display: flex;
+}
+
+.content {
+    flex: 1 1 auto;
+    margin-right: .5rem;
+}
+
+.send {
+    background-color: '#D6DDEC';
+    padding: '.2rem .5rem';
+    border: 'none';
+    cursor: pointer;
+}
