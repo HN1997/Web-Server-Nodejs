@@ -11,7 +11,7 @@ import Main from './components/Main/Main';
 export default () => {
   return (
     <div className="App">
-      <Header />
+      <Header/>
       <Main/>
       <Footer/>
     </div>
