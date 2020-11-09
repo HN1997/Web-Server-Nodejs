@@ -34,38 +34,18 @@ const Messages = ({channel, messages}) => {
     let hour = today.get('hour');
     let minute = today.get('minute');
 
-      //A text in markdown
-    const someText = "# Hello world!";
-    const someText2 = "*Try markdown with stars before and after your message*"
-
     return(
         <div className="messages">
-            <h1 align="center">Connected in the channel: {channel.name}</h1>
+            <h3 className="roomNameHeader">Connected in the channel: {channel.name}</h3>
             <div>
-                Some text in markdown:
-                {
-                    unified()
-                    .use(parse)
-                    .use(remark2react)
-                    .processSync(someText).result
-                }
-                {
-                    unified()
-                    .use(parse)
-                    .use(remark2react)
-                    .processSync(someText2).result
-                }
-            </div>
-
-            <div className="chatMessage">
                 { messages.map( (message, i) => (
                     <li key={i} className="message">
-                        <p>
+                        <p className="authorHeader">
                             <span>{message.author}</span>
                             {' '}
-                            <span>(sent a message at {hour}:{minute}, {day}/{month}/{year}):</span>
+                            <span className="sentMessageAt">(sent a message at {hour}:{minute}, {day}/{month}/{year}):</span>
                         </p>
-                        <div className="chatMessage">
+                        <div className="messageUser">
                         {
                             unified()
                             .use(parse)

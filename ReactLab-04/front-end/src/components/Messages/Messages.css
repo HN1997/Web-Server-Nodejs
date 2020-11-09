@@ -4,14 +4,12 @@
     overflow: 'auto';
 }
 
-.chatMessage {
-    background-color: #db2323,
-}
-
 .message {
-    margin: .2rem;
+    margin: 1rem;
     padding: .2rem;
-    background-color: #66728E;
+    background-color:#3e4042;
+    list-style-type: none;
+    border-radius: 10px;
 }
 
 ul{
@@ -19,4 +17,25 @@ ul{
     padding: 0;
     text-indent: 0;
     list-style-type: 0;
+}
+
+.sentMessageAt{
+    color: #bababa;
+    font-size: 15px;
+}
+
+.authorHeader {
+    font-size: 20px;
+    text-align: right;
+    margin-right: 0.3rem;
+}
+
+.messageUser{
+    text-align: right;
+    margin-right: .3rem;
+}
+
+.roomNameHeader {
+    text-align: right;
+    margin-right: 10px;
 }

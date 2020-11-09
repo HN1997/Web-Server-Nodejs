@@ -8,12 +8,8 @@ var channel = require('../Channel/Channel').channel;
 
 const Channels = () => (
     <div className="channels">
-        <h5 align="center">List of the channels:</h5>
-        <div>
-            <ul>
-                <li>{channel.name}</li>
-            </ul>
-        </div>
+        <h4 align="center">List of the channels:</h4>
+        <p className="channelsName"> {channel.name} </p>
     </div>
 )
 

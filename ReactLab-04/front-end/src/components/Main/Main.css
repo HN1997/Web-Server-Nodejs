@@ -1,7 +1,8 @@
 .main {
-    background-color: #afb2b5;
+    background-color: #303030;
     flex: 1 1 auto;
     display: flex;
     flex-direction: row;
     overflow: hidden;
+    margin-right: 10px;
 }

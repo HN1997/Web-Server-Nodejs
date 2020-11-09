@@ -1,5 +1,6 @@
 .footer {
     height: 30px;
-    background-color: #5977af;
+    background-color: #242526;
     flex-shrink: 0;
+    text-align: center;
   }
