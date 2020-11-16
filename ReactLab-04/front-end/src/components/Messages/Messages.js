@@ -2,10 +2,12 @@ import './Messages.css';
 
 import React from 'react';
 
+
 //For transforming markdown to html
 import unified from 'unified'
 import parse from 'remark-parse'
 import remark2react from 'remark-react'
+
 
 //Moment.js library - deprecated
 //it's slow

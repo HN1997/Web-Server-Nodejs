@@ -1,3 +1,5 @@
 node_modules/
+Chat-App/
+ReactLab-04/
 .*
 !.gitignore
