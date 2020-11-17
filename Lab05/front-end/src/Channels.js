@@ -41,6 +41,13 @@ export default ({
           </Link>
         </li>
       ))}
+      <li css={styles.channel}>Channel 1</li>
+      <li css={styles.channel}>Channel 2</li>
+      <li css={styles.channel}>Channel 3</li>
+      <li css={styles.channel}>Channel 4</li>
+      <li css={styles.channel}>Channel 5</li>
+      <li css={styles.channel}>Channel 6</li>
     </ul>
+    
   );
 }
