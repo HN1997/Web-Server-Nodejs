@@ -5,8 +5,11 @@ import { jsx } from '@emotion/core'
 const styles = {
   header: {
     height: '60px',
-    backgroundColor: 'rgba(255,255,255,.3)',
+    backgroundColor: '#282828',
     flexShrink: 0,
+    textAlign: 'center',
+    color: 'purple',
+    fontSize: '40px',
   },
   headerLogIn: {
     backgroundColor: 'red',
@@ -19,7 +22,7 @@ const styles = {
 export default () => {
   return (
     <header css={styles.header}>
-      Header
+      Welcome to the Chat !
     </header>
   );
 }

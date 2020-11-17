@@ -1,8 +1,11 @@
 import {} from 'react';
+import { Button, Typography } from '@material-ui/core'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // Layout
 import { useTheme } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Input from '@material-ui/core/Input'
 
 const useStyles = (theme) => ({
   root: {
@@ -10,6 +13,7 @@ const useStyles = (theme) => ({
     background: theme.palette.background.default,
     display: 'flex',
     flexDirection: 'column',
+    borderRadius: '20px',
     justifyContent: 'center',
     '& > div': {
       margin: `${theme.spacing(1)}`,
@@ -24,7 +28,7 @@ const useStyles = (theme) => ({
       },
     },
   },
-})
+});
 
 export default ({
   onUser
@@ -34,19 +38,33 @@ export default ({
     <div css={styles.root}>
       <div>
         <fieldset>
-          <label htmlFor="username">username: </label>
-          <input id="username" name="username" />
+          <Box justifyContent="center" display="flex">
+          <Typography variant="h5" color="secondary" className={styles.MyTypoStyle}>Username</Typography>
+          </Box>
+          <Input id="username" name="username" color="primary"></Input>
         </fieldset>
         <fieldset>
-          <label htmlFor="password">password:</label>
-          <input id="password" name="password" type="password" />
+          <Box justifyContent="center" display="flex">
+            <Typography variant="h5" color="secondary">Password</Typography>
+          </Box>
+          <Input id="password" name="password" type="password" color="primary"></Input>
         </fieldset>
-        <fieldset>
-          <input type="submit" value="login" onClick={ (e) => {
-            e.stopPropagation()
-            onUser({username: 'david'})
-          }} />
-        </fieldset>
+        <Box justifyContent="center" display="flex">
+          <fieldset>
+            <Button 
+              color="secondary" 
+              variant="outlined"
+              type="submit"
+              value="login"
+              onClick={ (e) => {
+                e.stopPropagation()
+                onUser({username: 'david'})
+              }}
+              >
+              Login
+            </Button>
+          </fieldset>
+        </Box>
       </div>
     </div>
   );

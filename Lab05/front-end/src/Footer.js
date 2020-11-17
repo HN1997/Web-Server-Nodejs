@@ -3,17 +3,26 @@ import './App.css';
 import { jsx } from '@emotion/core'
 
 const styles = {
-  footer: {
-    height: '30px',
-    backgroundColor: 'rgba(255,255,255,.3)',
+  header: {
+    height: '60px',
+    backgroundColor: '#282828',
     flexShrink: 0,
+    textAlign: 'center',
+    color: 'purple',
+    fontSize: '40px',
+  },
+  headerLogIn: {
+    backgroundColor: 'red',
+  },
+  headerLogOut: {
+    backgroundColor: 'blue',
   },
 }
 
 export default () => {
   return (
-    <footer style={styles.footer}>
-      footer
-    </footer>
+    <header css={styles.header}>
+      Welcome to the Chat !
+    </header>
   );
 }
