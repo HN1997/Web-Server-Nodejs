@@ -3,6 +3,14 @@ const db = require('./db')
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const cookieSession = require('cookie-session')
+
+const fetch = require('node-fetch')
+
+const client_id = 'Iv1.5f74e0a3544e9064'
+const client_secret =  '45dfee8e9a8de0a7d7268432d86e4d72cbd79690'
+const cookie_secret = 'bongocat'
+
 
 app.use(require('body-parser').json())
 app.use(cors())
@@ -68,5 +76,57 @@ app.put('/users/:id', async (req, res) => {
   const user = await db.users.update(req.body)
   res.json(user)
 })
+
+/* Partie github */
+app.use(cookieSession({
+  secret : cookie_secret
+}))
+
+app.get('/login/github', (req,res)=>{
+  const redirect_uri = "http://localhost:3000/login/github/callback"
+  const url= `https://github.com/login/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}`
+  res.redirect(url)
+})
+
+async function getAccessToken(code) {
+  const res = await fetch('https://github.com/login/oauth/access_token', {
+  mehtod: "POST",
+  headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      client_id,
+      client_secret,
+      code
+    })
+  })
+  const data = await res.text()
+  const params = new URLSearchParams(data)
+  return params.get('acces_token')
+}
+
+async function getGithubUser (access_token){
+  const req = await fetch('https://api.github.com/user', {
+    headers: {
+      Authorization: `bearer ${access_token}`
+    }
+  })
+  const data = await req.json()
+  return data
+}
+
+app.get('/login/github/callback', async (req,res)=>{
+  const code = req.query.code
+  const token = await getAccessToken(code)
+  const githubData = await getGithubUser(token)
+  if(githubData){
+    req.session.githubId = githubData.id
+    req.session.token = token
+    res.redirect('/admin')
+  } else{
+    console.log('Error')
+    res.send('Error happend')
+  }
+});
 
 module.exports = app
