@@ -70,3 +70,5 @@ app.put('/users/:id', async (req, res) => {
 })
 
 module.exports = app
+
+/* Partie Github */
