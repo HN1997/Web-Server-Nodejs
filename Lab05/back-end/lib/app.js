@@ -3,9 +3,15 @@ const db = require('./db')
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const fetch = require('node-fetch')
 
 app.use(require('body-parser').json())
 app.use(cors())
+
+const client_id = "Iv1.b225a4a35ec32669"
+const client_secret = "96f30ae17c0dca7cb0aefbc53cbd1958ff216bb3"
+
+console.log({client_id,client_secret})
 
 app.get('/', (req, res) => {
   res.send([
@@ -69,6 +75,36 @@ app.put('/users/:id', async (req, res) => {
   res.json(user)
 })
 
-module.exports = app
+
 
 /* Partie Github */
+//The user go to the login page of github
+app.get('/login/github', (req,res) => {
+  const redirect_uri = "http://localhost:9000/login/github/callback"
+  const url = `https://github.com/login/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}`
+  res.redirect(url)
+})
+//Exchange token from access token
+async function getAccessToken (code) {
+  const res = fetch('https://github.com/login/oauth/access_token', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      client_id, client_secret, code
+    }),
+  });
+  const data = await res.text()
+  const params = new URLSearchParams(data)
+  return params.get('access_token')
+}
+
+app.get('/login/github/callback', async (req,res) => {
+  const code = req.query.code
+  const token = await getAccessToken(code)
+  res.json({token})
+})
+
+
+module.exports = app
