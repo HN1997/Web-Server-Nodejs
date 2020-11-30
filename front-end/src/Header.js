@@ -1,3 +1,6 @@
+import {useContext} from 'react';
+import {Context} from './Context'
+
 import './App.css';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
@@ -5,6 +8,7 @@ import { jsx } from '@emotion/core'
 import { useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
 
 const useStyles = (theme) => ({
   header: {
@@ -28,11 +32,14 @@ const useStyles = (theme) => ({
 export default ({
   drawerToggleListener
 }) => {
+  const test = useContext(Context)
+  console.log('header: ', test);
   const styles = useStyles(useTheme())
   const handleDrawerToggle = (e) => {
     drawerToggleListener()
   }
   return (
+
     <header css={styles.header}>
       <IconButton
         color="inherit"

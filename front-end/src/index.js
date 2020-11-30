@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ContextProvider from './Context';
+import { CookiesProvider } from 'react-cookie';
 import 'typeface-roboto'
 // Layout
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -15,9 +17,13 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+      <ContextProvider>
+        <CookiesProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+      </CookiesProvider>
+    </ContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

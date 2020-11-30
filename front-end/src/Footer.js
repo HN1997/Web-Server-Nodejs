@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import {Context} from './Context'
 import './App.css';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
@@ -11,6 +13,8 @@ const styles = {
 }
 
 export default () => {
+  const test = useContext(Context)
+  console.log('footer: ', test);
   return (
     <footer style={styles.footer}>
       footer
