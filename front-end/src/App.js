@@ -68,6 +68,9 @@ export default () => {
           <Route path="/Oups">
             <Oups />
           </Route>
+          <Route exact path="/changinggravatar">
+
+          </Route>
         </Switch>
         <Footer />
     </div>

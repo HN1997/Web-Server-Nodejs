@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import Context from './Context'
-import { Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 
 const useStyles = (theme) => ({
   header: {
@@ -49,6 +49,9 @@ export default ({
     e.stopPropagation()
     setOauth(null)
   }
+  const AddGravatar = () => {
+    window.location="/changinggravatar";
+  };
   return (
     <header css={styles.header}>
       <IconButton
@@ -62,8 +65,14 @@ export default ({
       {
         oauth ?
           <span>
+            <Typography color="primary" variant="h5">Welcome ! Connected as :</Typography>
             {oauth.email}
-            <Link onClick={onClickLogout}>logout</Link>
+            <br></br>
+              <Button onClick={AddGravatar}>
+                <img src="https://i.stack.imgur.com/frlIf.png" alt="Image" style={{width:'40px'}}></img>
+              </Button>
+            <br></br>
+            <Button variant="outlined" color="secondary" onClick={onClickLogout}>LOGOUT</Button>
           </span>
         :
           <Typography variant="h3" color="primary">Welcome to ECE's Chat !</Typography>
