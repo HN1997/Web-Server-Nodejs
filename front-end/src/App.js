@@ -8,6 +8,7 @@ import Header from './Header'
 import Main from './Main'
 import Login from './Login'
 import Context from './Context'
+import AddGravatar from './AddGravatar';
 // Rooter
 import {
   Switch,
@@ -68,8 +69,8 @@ export default () => {
           <Route path="/Oups">
             <Oups />
           </Route>
-          <Route exact path="/changinggravatar">
-
+          <Route path="/changinggravatar">
+            <AddGravatar/>
           </Route>
         </Switch>
         <Footer />
