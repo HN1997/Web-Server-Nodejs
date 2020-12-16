@@ -13,6 +13,10 @@ import Context from './Context'
 import {
   useHistory
 } from "react-router-dom";
+import {Button, Typography} from '@material-ui/core'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import theme from './theme'
+import {ThemeProvider} from '@material-ui/core/styles';
 
 const base64URLEncode = (str) => {
   return str.toString('base64')
@@ -31,7 +35,7 @@ const sha256 = (buffer) => {
 const useStyles = (theme) => ({
   root: {
     flex: '1 1 auto',
-    background: theme.palette.background.default,
+    background: '#1e1e1e',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -71,7 +75,12 @@ const Redirect = ({
   }
   return (
     <div css={styles.root}>
-      <Link onClick={redirect} color="secondary">Login with OpenID Connect and OAuth2</Link>
+      <ThemeProvider theme={theme}>
+        <Button onClick={redirect} variant="outlined" color="primary">
+          <GitHubIcon fontSize="large" ></GitHubIcon>
+          <Typography>LOGIN WITH GITHUB</Typography>
+        </Button>
+      </ThemeProvider>
     </div>
   )
 }

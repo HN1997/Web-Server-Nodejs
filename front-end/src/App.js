@@ -21,7 +21,7 @@ const styles = {
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: '#565E71',
+    backgroundColor: 'black',
     padding: '50px',
   },
 }
@@ -35,41 +35,41 @@ export default () => {
   }
   return (
     <div className="App" css={styles.root}>
-      <Header drawerToggleListener={drawerToggleListener}/>
-      <Switch>
-        <Route exact path="/">
-          {
-            oauth ? (
-              <Redirect
-                to={{
-                  pathname: "/channels",
-                  state: { from: location }
-                }}
-              />
-            ) : (
-              <Login />
-            )
-          }
-        </Route>
-        <Route path="/channels">
-          {
-            oauth ? (
-              <Main />
-            ) : (
-              <Redirect
-                to={{
-                  pathname: "/",
-                  state: { from: location }
-                }}
-              />
-            )
-          }
-        </Route>
-        <Route path="/Oups">
-          <Oups />
-        </Route>
-      </Switch>
-      <Footer />
+        <Header drawerToggleListener={drawerToggleListener}/>
+        <Switch>
+          <Route exact path="/">
+            {
+              oauth ? (
+                <Redirect
+                  to={{
+                    pathname: "/channels",
+                    state: { from: location }
+                  }}
+                />
+              ) : (
+                <Login />
+              )
+            }
+          </Route>
+          <Route path="/channels">
+            {
+              oauth ? (
+                <Main />
+              ) : (
+                <Redirect
+                  to={{
+                    pathname: "/",
+                    state: { from: location }
+                  }}
+                />
+              )
+            }
+          </Route>
+          <Route path="/Oups">
+            <Oups />
+          </Route>
+        </Switch>
+        <Footer />
     </div>
   );
 }

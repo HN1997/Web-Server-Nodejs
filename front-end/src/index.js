@@ -11,12 +11,8 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
+import theme from './theme'
 
-const theme = createMuiTheme({
-  palette: {
-    type: 'dark',
-  }
-});
 
 ReactDOM.render(
   <React.StrictMode>

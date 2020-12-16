@@ -8,12 +8,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import Context from './Context'
+import { Typography } from '@material-ui/core';
 
 const useStyles = (theme) => ({
   header: {
     padding: theme.spacing(1),
-    backgroundColor: 'rgba(255,255,255,.3)',
+    backgroundColor: '#161616',
     flexShrink: 0,
+    borderRadius: '10px 10px 0px 0px',
+    textAlign: 'center',
   },
   headerLogIn: {
     backgroundColor: 'red',
@@ -25,6 +28,9 @@ const useStyles = (theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none !important',
     },
+  },
+  welcomeMessage : {
+    textAlign: 'center',
   }
 })
 
@@ -53,7 +59,6 @@ export default ({
       >
         <MenuIcon />
       </IconButton>
-      Header
       {
         oauth ?
           <span>
@@ -61,7 +66,7 @@ export default ({
             <Link onClick={onClickLogout}>logout</Link>
           </span>
         :
-          <span>new user</span>
+          <Typography variant="h3" color="primary">Welcome to ECE's Chat !</Typography>
       }
       
     </header>
