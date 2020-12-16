@@ -67,12 +67,16 @@ export default ({
           <span>
             <Typography color="primary" variant="h5">Welcome ! Connected as :</Typography>
             {oauth.email}
+<<<<<<< HEAD
             <br></br>
               <Button onClick={AddGravatar}>
                 <img src="https://i.stack.imgur.com/frlIf.png" alt="Image" style={{width:'40px'}}></img>
               </Button>
             <br></br>
             <Button variant="outlined" color="secondary" onClick={onClickLogout}>LOGOUT</Button>
+=======
+            <Link onClick={onClickLogout}>  (logout)</Link>
+>>>>>>> Ajout de l'email dans les nouveaux messages
           </span>
         :
           <Typography variant="h3" color="primary">Welcome to ECE's Chat !</Typography>
