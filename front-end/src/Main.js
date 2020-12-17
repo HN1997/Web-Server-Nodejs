@@ -14,10 +14,11 @@ import {
   Route,
   Switch,
 } from 'react-router-dom'
+import { Button } from '@material-ui/core';
 
 const useStyles = (theme) => ({
   root: {
-    backgroundColor: '#373B44',
+    backgroundColor: '#492449',
     overflow: 'hidden',
     flex: '1 1 auto',
     display: 'flex',
@@ -31,7 +32,30 @@ const useStyles = (theme) => ({
   drawerVisible: {
     display: 'block',
   },
+  buttonBottom: {
+    position: 'absolute',
+    display:'block',
+    bottom: '0',
+    width:'100%',
+  },
+  displayChannels : {
+    backgroundColor: '#232123',
+    height: '100%',
+  }
 })
+
+//When user click CREATE A CHANNEL button
+const onClickButton = () => {
+  var channelName = prompt("Name of the new channel :");
+  if(channelName===null || channelName===""){
+    const txt = "Error, can't create a channel with an empty name.";
+    alert(txt);
+  }
+  else if(channelName!==null || channelName!==""){
+    const txt = `New channel created : <${channelName}> !`;
+    alert(txt);
+  }
+}
 
 export default () => {
   const {
@@ -54,7 +78,10 @@ export default () => {
         open={isDrawerVisible}
         css={[styles.drawer, isDrawerVisible && styles.drawerVisible]}
       >
-        <Channels />
+        <div css={styles.displayChannels}><Channels/></div>
+        <div css={styles.buttonBottom}>
+          <Button className="divBottom" variant="outlined" color="secondary" fullWidth onClick={onClickButton}>CREATE A CHANNEL</Button>
+        </div>
       </Drawer>
       <Switch>
         <Route path="/channels/:id">

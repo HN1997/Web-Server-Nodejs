@@ -74,7 +74,7 @@ export default () => {
         onScrollDown={onScrollDown}
         ref={listRef}
       />
-      <Form addMessage={addMessage} channel={channel} />
+        <Form addMessage={addMessage} channel={channel} />
       <Fab
         color="primary"
         aria-label="Latest messages"

@@ -8,14 +8,11 @@ import { useContext } from 'react'
 
 const useStyles = (theme) => ({
   divroot: {
-    backgroundColor: '#281a25',
+    backgroundColor: '#492449',
   },
   paddingtop : {
     paddingTop: '10px'
   },
-  input: {
-    color: "white"
-  }
 })
 
 export default () => {
@@ -32,7 +29,7 @@ export default () => {
   return (
     <div style={styles.divroot}>
       <Box m={1} p={1}>
-        <Typography variant="h4" color="primary">Change your profile : </Typography>
+        <Typography variant="h4" color="secondary">Change your settings : </Typography>
       </Box>
       <Box m={1} p={1}>
         <TextField color="secondary" defaultValue={oauth.email} InputProps={styles.input} label="Email" variant="outlined"></TextField>
@@ -41,14 +38,14 @@ export default () => {
         <TextField color="secondary" defaultValue="{oauth.username}" InputProps={styles.input} label="Name" variant="outlined"></TextField>
       </Box>
       <Box m={1} p={1}>
-        <TextField color="secondary" defaultValue="{oauth.username}" InputProps={styles.input} label="Gravatar address (https://...)" variant="outlined"></TextField>
+        <TextField color="secondary" defaultValue="https://fr.gravatar.com/userimage/197701412/0bd3c45d3056d74f9f97c8fee226264a.jpg" InputProps={styles.input} label="Gravatar address (https://...)" variant="outlined"></TextField>
       </Box>
       <Box m={1} p={1}>
         <Typography>Light mode: <Checkbox></Checkbox></Typography>
         
       </Box>
       <Box m={1} p={1}>
-        <Button variant="outlined" color="secondary" onClick={BackToMenu}>SAVE</Button>
+        <Button variant="outlined" color="secondary" onClick={BackToMenu} >SAVE</Button>
         <Button variant="outlined" color="secondary" onClick={BackToMenu} style={{marginLeft:"10px"}}>EXIT</Button>
       </Box>
     </div>

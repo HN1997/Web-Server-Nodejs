@@ -7,6 +7,7 @@ import Link from '@material-ui/core/Link'
 // Local
 import Context from './Context'
 import {useHistory} from 'react-router-dom'
+import { Button, Typography } from '@material-ui/core';
 
 const styles = {
   // root: {
@@ -15,7 +16,7 @@ const styles = {
   channel: {
     padding: '.2rem .5rem',
     whiteSpace: 'nowrap', 
-  }
+  },
 }
 
 export default () => {
@@ -40,20 +41,23 @@ export default () => {
     fetch()
   }, [oauth, setChannels])
   return (
-    <ul style={styles.root}>
-      { channels.map( (channel, i) => (
-        <li key={i} css={styles.channel}>
-          <Link
-            href={`/channels/${channel.id}`}
-            onClick={ (e) => {
-              e.preventDefault()
-              history.push(`/channels/${channel.id}`)
-            }}
-          >
-            {channel.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <Typography variant="h6" color="secondary" css={styles.channel}>List of channels:</Typography>
+      <ul style={styles.root}>
+        { channels.map( (channel, i) => (
+          <li key={i} css={styles.channel}>
+            <Link
+              href={`/channels/${channel.id}`}
+              onClick={ (e) => {
+                e.preventDefault()
+                history.push(`/channels/${channel.id}`)
+              }}
+            >
+              {channel.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
