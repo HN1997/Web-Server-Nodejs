@@ -7,7 +7,8 @@ import Link from '@material-ui/core/Link'
 // Local
 import Context from './Context'
 import {useHistory} from 'react-router-dom'
-import { Button, Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const styles = {
   // root: {
@@ -17,6 +18,9 @@ const styles = {
     padding: '.2rem .5rem',
     whiteSpace: 'nowrap', 
   },
+  settingsIconStyle: {
+    padding: '.1rem .0rem .0rem .2rem',
+  }
 }
 
 export default () => {
@@ -55,6 +59,9 @@ export default () => {
             >
               {channel.name}
             </Link>
+            <Button>
+              <SettingsIcon fontSize="small" color="secondary" css={styles.settingsIconStyle}></SettingsIcon>
+            </Button>
           </li>
         ))}
       </ul>

@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // Layout
@@ -10,6 +10,8 @@ import Context from './Context'
 import Channels from './Channels'
 import Channel from './Channel'
 import Welcome from './Welcome'
+import { useHistory} from "react-router-dom";
+import axios from 'axios';
 import {
   Route,
   Switch,
@@ -45,15 +47,18 @@ const useStyles = (theme) => ({
 })
 
 //When user click CREATE A CHANNEL button
-const onClickButton = () => {
+const onClickButton = async () => {
   var channelName = prompt("Name of the new channel :");
   if(channelName===null || channelName===""){
     const txt = "Error, can't create a channel with an empty name.";
     alert(txt);
   }
   else if(channelName!==null || channelName!==""){
-    const txt = `New channel created : <${channelName}> !`;
-    alert(txt);
+    const txt = channelName;
+    const {data: {id}} = await axios.post('http://localhost:3001/channels', {
+          name: txt
+    })
+    window.location="/channels";
   }
 }
 
@@ -66,6 +71,7 @@ export default () => {
   const styles = useStyles(theme)
   const alwaysOpen = useMediaQuery(theme.breakpoints.up('sm'))
   const isDrawerVisible = alwaysOpen || drawerVisible
+  
   return (
     <main css={styles.root}>
       <Drawer
