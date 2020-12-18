@@ -20,8 +20,8 @@ const useStyles = (theme) => ({
     textAlign: 'center',
   },
   icon: {
-    width: '30%',
-    fill: '#fff',
+    width: '20%',
+    fill: '#69bdd2',
   }
 })
 

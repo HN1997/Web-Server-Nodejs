@@ -54,6 +54,16 @@ const useStyles = (theme) => ({
   },
 })
 
+var Usermanagment =async (oauth)=>{
+
+  console.log(oauth.email)
+  //
+  const {data:test} = await axios.post('http://localhost:3001/users', {
+    id: 'hugo'
+  })
+  //console.log(test);
+}
+
 const Redirect = ({
   config,
   codeVerifier,
@@ -126,10 +136,12 @@ export default ({
     if(!oauth){
       const codeVerifier = base64URLEncode(crypto.randomBytes(32))
       setCookie('code_verifier', codeVerifier)
+      
       return (
         <Redirect codeVerifier={codeVerifier} config={config} css={styles.root} />
       )
     }else{ // yes: user is already logged in, great, is is working
+      
       return (
         <Tokens oauth={oauth} css={styles.root} />
       )
@@ -158,6 +170,7 @@ export default ({
       }
       fetch()
     })
+    
     return (
       <div css={styles.root}>Loading tokens</div>
     )
