@@ -66,7 +66,7 @@ app.get('/users', async (req, res) => {
 })
 
 app.post('/users', async (req, res) => {
-  console.log("ajout de hugo")
+  console.log("ajout de Pierre")
   const user = await db.users.create(req.body)
   res.status(201).json(user)
 })
@@ -79,6 +79,13 @@ app.get('/users/:id', async (req, res) => {
 app.put('/users/:id', async (req, res) => {
   const user = await db.users.update(req.body)
   res.json(user)
+})
+
+app.delete('/users/:id', async (req, res) => {
+  
+  const user = await db.users.delete(req.params.id)
+  res.json(user)
+  console.log(user)
 })
 
 module.exports = app

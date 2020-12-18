@@ -117,10 +117,12 @@ module.exports = {
       if(!original) throw Error('Unregistered user id')
       store.users[id] = merge(original, user)
     },
-    delete: (id, user) => {
-      const original = store.users[id]
-      if(!original) throw Error('Unregistered user id')
-      delete store.users[id]
+    delete: async (id) => {
+      if(!id) throw Error('Invalid user id')
+      const original = await db.del(`users:${id}`)
+     // const original = store.users[id]
+      //if(!original) throw Error('Unregistered user id')
+      //delete store.users[id]
     }
   },
   admin: {

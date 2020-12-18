@@ -57,11 +57,14 @@ const useStyles = (theme) => ({
 var Usermanagment =async (oauth)=>{
 
   console.log(oauth.email)
+  const user = {
+    username : "Pierre"
+  }
+
   //
-  const {data:test} = await axios.post('http://localhost:3001/users', {
-    id: 'hugo'
-  })
+  const blabla = await axios.post('http://localhost:3001/users',user)
   //console.log(test);
+  console.log(blabla)
 }
 
 const Redirect = ({
