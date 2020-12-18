@@ -23,6 +23,7 @@ const styles = {
   }
 }
 
+
 export default () => {
   const {
     oauth,
@@ -63,9 +64,8 @@ export default () => {
               var confirmBox = window.confirm("Are you sure you want to delete this channel?")
               if(confirmBox){
                 console.log(channel.name + " deleted")
-                const {data: {id}} = await axios.delete(`http://localhost:3001/channels/${channel.id}`, {
-                      name: 'okokokok'
-                })
+                const {data: {id}} = await axios.delete(`http://localhost:3001/channels/${channel.id}`)
+               
               }
             }}>
               <DeleteForever fontSize="small" color="secondary" css={styles.settingsIconStyle}></DeleteForever>

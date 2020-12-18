@@ -42,7 +42,7 @@ module.exports = {
       store.channels[id] = merge(original, channel)
     },
     delete: async (id) => {
-    console.log( id )
+    
     if(!id) throw Error('Invalid id')
     const data = await db.del(`channels:${id}`)
       // const original = store.channels[id]
