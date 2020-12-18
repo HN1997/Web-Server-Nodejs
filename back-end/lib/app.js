@@ -40,6 +40,11 @@ app.put('/channels/:id', async (req, res) => {
   res.json(channel)
 })
 
+app.delete('/channels', async (req, res) => {
+  const channel = await db.channels.delete(req.body)
+  res.json(channel)
+})
+
 // Messages
 
 app.get('/channels/:id/messages', async (req, res) => {

@@ -8,7 +8,7 @@ import Link from '@material-ui/core/Link'
 import Context from './Context'
 import {useHistory} from 'react-router-dom'
 import { Typography, Button } from '@material-ui/core';
-import SettingsIcon from '@material-ui/icons/Settings';
+import DeleteForever from '@material-ui/icons/DeleteForever';
 
 const styles = {
   // root: {
@@ -59,8 +59,16 @@ export default () => {
             >
               {channel.name}
             </Link>
-            <Button>
-              <SettingsIcon fontSize="small" color="secondary" css={styles.settingsIconStyle}></SettingsIcon>
+            <Button onClick={async () => {
+              var confirmBox = window.confirm("Are you sure you want to delete this channel?")
+              if(confirmBox){
+                console.log(channel.name + " deleted")
+                const {data: {id}} = await axios.delete('http://localhost:3001/channels', {
+                      name: 'okokokok'
+                })
+              }
+            }}>
+              <DeleteForever fontSize="small" color="secondary" css={styles.settingsIconStyle}></DeleteForever>
             </Button>
           </li>
         ))}
