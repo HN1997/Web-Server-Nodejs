@@ -57,12 +57,15 @@ const useStyles = (theme) => ({
 var Usermanagment = async (email,user)=>{
 
   //console.log(oauth.email)
-  console.log(email)
-  console.log(user)
+  
+  user.email=email
+  user.userName=email
+  //console.log(email)
+  //console.log(user)
   
 
   //
-  //const blabla = await axios.post('http://localhost:3001/users',user)
+  const blabla = await axios.post('http://localhost:3001/users',user)
   //console.log(test);
   //console.log(blabla)
 }
