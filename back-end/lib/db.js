@@ -84,6 +84,10 @@ module.exports = {
   },
   users: {
     create: async (user) => {
+      const data = await db.get(`users:`+JSON.stringify(user))
+      console.log(data)
+      console.log("j'essaie de get tout les pierre")
+      
       if(!user.username) throw Error('Invalid user')
       const id = uuid()
       await db.put(`users:${id}`, JSON.stringify(user))
