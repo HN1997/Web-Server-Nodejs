@@ -64,8 +64,8 @@
 
 ## Authors
 
-*Camugli Pierre, pierre.camugli@edu.ece.fr, PierreC12033 ...*
-*Navillod Hugo, ugo.navillod@edu.ece.fr, HN1997 ...*
+* Camugli Pierre, pierre.camugli@edu.ece.fr, PierreC12033
+* Navillod Hugo, ugo.navillod@edu.ece.fr, HN1997
 
 ## Tasks
 
