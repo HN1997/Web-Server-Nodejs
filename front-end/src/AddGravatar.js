@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Context from './Context'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 const useStyles = (theme) => ({
   divroot: {
@@ -15,39 +15,78 @@ const useStyles = (theme) => ({
   },
 })
 
-export default () => {
+export default ({props}) => {
+    const {
+    oauth, setOauth
+  } = useContext(Context)
+
   const BackToMenu = () => {
     window.location="/";
   };
   const styles = useStyles(useTheme());
 
-  const {
-    oauth, setOauth,
-    drawerVisible, setDrawerVisible
-  } = useContext(Context)
+  const [email, setEmail] = useState(props.email);
+  const [name, setName] = useState(props.userName);
+  const [gravatarUrl, setGravatarUrl] = useState(props.img);
+
+  const changePictureOne = () => {
+    setGravatarUrl("https://octodex.github.com/images/dojocat.jpg");
+  }
+  const changePictureTwo = () => {
+    setGravatarUrl("https://octodex.github.com/images/gracehoppertocat.jpg");
+  }
+  const changePictureThree = () => {
+    setGravatarUrl("https://noahnyy.github.io/assets/img/sample/avatar.jpg");
+  }
+
+  const emailChange = (e) => {
+    setEmail(e.target.value)
+  }
+  const nameChange = (e) => {
+    setName(e.target.value)
+  }
+  const gravatarUrlChange = (e) => {
+    setGravatarUrl(e.target.value)
+  }
+
+  const saveSettings = (e) => {
+    props.email = email;
+    props.userName = name;
+    props.img = gravatarUrl;
+    alert("Data saved! You can leave the page with the exit button :)");
+  }
 
   return (
     <div style={styles.divroot}>
-      <Box m={1} p={1}>
-        <Typography variant="h4" color="secondary">Change your settings : </Typography>
-      </Box>
-      <Box m={1} p={1}>
-        <TextField color="secondary" defaultValue={oauth.email} InputProps={styles.input} label="Email" variant="outlined"></TextField>
-      </Box>
-      <Box m={1} p={1}>
-        <TextField color="secondary" defaultValue="{oauth.username}" InputProps={styles.input} label="Name" variant="outlined"></TextField>
-      </Box>
-      <Box m={1} p={1}>
-        <TextField color="secondary" defaultValue="https://fr.gravatar.com/userimage/197701412/0bd3c45d3056d74f9f97c8fee226264a.jpg" InputProps={styles.input} label="Gravatar address (https://...)" variant="outlined"></TextField>
-      </Box>
-      <Box m={1} p={1}>
-        <Typography>Light mode: <Checkbox></Checkbox></Typography>
-        
-      </Box>
-      <Box m={1} p={1}>
-        <Button variant="outlined" color="secondary" onClick={BackToMenu} >SAVE</Button>
-        <Button variant="outlined" color="secondary" onClick={BackToMenu} style={{marginLeft:"10px"}}>EXIT</Button>
-      </Box>
+      <form>
+        <Box m={1} p={1}>
+          <Typography variant="h4" color="secondary">Change your settings : </Typography>
+        </Box>
+        <Box m={1} p={1}>
+          <Button onClick={changePictureOne}>
+            <img src="https://octodex.github.com/images/dojocat.jpg" style={{width:'40px'}}></img>
+          </Button>
+          <Button onClick={changePictureTwo}>
+            <img src="https://octodex.github.com/images/gracehoppertocat.jpg" style={{width:'40px'}}></img>
+          </Button>
+          <Button onClick={changePictureThree}>
+            <img src="https://noahnyy.github.io/assets/img/sample/avatar.jpg" style={{width:'40px'}}></img>
+          </Button>
+        </Box>
+        <Box m={1} p={1}>
+          <TextField color="secondary" defaultValue={props.email} InputProps={styles.input} label="Email" variant="outlined" onChange={emailChange}></TextField>
+        </Box>
+        <Box m={1} p={1}>
+          <TextField color="secondary" defaultValue={props.userName} InputProps={styles.input} label="Name" variant="outlined" onChange={nameChange}></TextField>
+        </Box>
+        <Box m={1} p={1}>
+          <TextField color="secondary" defaultValue={props.img} InputProps={styles.input} label="Gravatar address (https://...)" variant="outlined" onChange={gravatarUrlChange}></TextField>
+        </Box>
+        <Box m={1} p={1}>
+          <Button variant="outlined" color="secondary" onClick={saveSettings} >SAVE</Button>
+          <Button variant="outlined" color="secondary" onClick={BackToMenu} style={{marginLeft:"10px"}}>EXIT</Button>
+        </Box>
+      </form>
     </div>
   );
 }

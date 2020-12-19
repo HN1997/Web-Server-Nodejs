@@ -84,9 +84,9 @@ module.exports = {
   },
   users: {
     create: async (user) => {
-      const data = await db.get(`users:`+JSON.stringify(user))
-      console.log(data)
-      console.log("j'essaie de get tout les pierre")
+      // const data = await db.get(`users:`+JSON.stringify(user))
+      // console.log(data)
+      // console.log("j'essaie de get tout les pierre")
       
       if(!user.username) throw Error('Invalid user')
       const id = uuid()
@@ -127,8 +127,6 @@ module.exports = {
       if(!original) throw Error('Unregistered user id')
       delete store.users[id]
       */
-     if(!id) throw Error('Invalid id')
-     const data = await db.del(`users:${id}`)
       if(!id) throw Error('Invalid user id')
       const original = await db.del(`users:${id}`)
      // const original = store.users[id]

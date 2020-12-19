@@ -5,7 +5,6 @@ import { jsx } from '@emotion/core'
 // Layout
 import { useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import Context from './Context'
 import { Avatar, Button, Typography } from '@material-ui/core';
@@ -35,7 +34,7 @@ const useStyles = (theme) => ({
 })
 
 export default ({
-  drawerToggleListener
+  drawerToggleListener, props
 }) => {
   const styles = useStyles(useTheme())
   const {
@@ -52,6 +51,7 @@ export default ({
   const AddGravatar = () => {
     window.location="/changinggravatar";
   };
+  
   return (
     <header css={styles.header}>
       <IconButton
@@ -69,7 +69,7 @@ export default ({
             {oauth.email}
             <br></br>
               <Button onClick={AddGravatar}>
-                <Avatar src="https://i.stack.imgur.com/frlIf.png" alt="Image" style={{width:'40px'}}></Avatar>
+                <Avatar src={props.img} alt="Image" style={{width:'40px'}}></Avatar>
               </Button>
             <br></br>
             <Button variant="outlined" color="secondary" onClick={onClickLogout}>LOGOUT</Button>

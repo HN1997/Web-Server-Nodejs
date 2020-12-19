@@ -82,14 +82,31 @@ export default () => {
   const drawerToggleListener = () => {
     setDrawerMobileVisible(!drawerMobileVisible)
   }
+  const {user} = useContext(Context);
+  console.log(user);
 
   if (oauth) {
     managementUser(oauth);
   }
 
+  //console.log(user.email);
+  /*
+  const [user, setUser] = useState(
+    {
+        img: "https://i.stack.imgur.com/frlIf.png",
+        userName: "defautUserName",
+        email: "defaultEmail",
+    }
+  )
+  if(oauth){
+    user.email = oauth.email;
+    user.userName = oauth.email;
+  }
+  */
+
   return (
     <div className="App" css={styles.root}>
-      <Header drawerToggleListener={drawerToggleListener} />
+      <Header drawerToggleListener={drawerToggleListener} props={user}/>
       <Switch>
         <Route exact path="/">
           {
@@ -123,7 +140,7 @@ export default () => {
           <Oups />
         </Route>
         <Route path="/changinggravatar">
-          <AddGravatar />
+          <AddGravatar props={user}/>
         </Route>
       </Switch>
       <Footer />
