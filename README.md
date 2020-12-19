@@ -65,7 +65,7 @@
 ## Authors
 
 * Camugli Pierre, pierre.camugli@edu.ece.fr, PierreC12033
-* Navillod Hugo, ugo.navillod@edu.ece.fr, HN1997
+* Navillod Hugo, hugo.navillod@edu.ece.fr, HN1997
 
 ## Tasks
 
@@ -85,13 +85,15 @@ Project management
 Application development
 
 * Welcome screens   
-  *place your comments*
+  * The user when he connect to the plateform is redirect to a welcome page 
+  * He can see his email address at the top along with his gravatar
+  * Multiple settings are available (WIP)
 * New channel creation   
-  *place your comments*
+  * The user _can_ create new channels, name them as he wants and write in them
 * Channel membership and access   
-  *place your comments*
+  * (WIP)
 * Ressource access control   
-  *place your comments*
+  *
 * Invite users to channels   
   *place your comments*
 * Message modification   
@@ -99,7 +101,8 @@ Application development
 * Message removal   
   *place your comments*
 * Account settings   
-  *place your comments*
+  * The user can choose between a set of themes
+  * The user can change his username (set as default to his email address)
 * Gravatar integration   
   *place your comments*
 * Avatar selection   
