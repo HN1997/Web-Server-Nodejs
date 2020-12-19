@@ -106,7 +106,6 @@ module.exports = {
               if(leresultat[i].email===user.email)
               {
                 exist = Boolean(true)
-                
                 //console.log("L'utilisateur "+user.username +" existe déjà")
               }
             }

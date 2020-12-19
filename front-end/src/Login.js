@@ -61,11 +61,10 @@ var Usermanagment = async (email,user)=>{
   user.email=email
   user.userName=email
   //console.log(email)
-  //console.log(user)
-  
-
-  //
-  const blabla = await axios.post('http://localhost:3001/users',user)
+  //console.log(user
+  await axios.post('http://localhost:3001/users',user).then(
+    user = await axios.get(`http://localhost:3001/users/${user.email}`)
+  )
   //console.log(test);
   //console.log(blabla)
 }
