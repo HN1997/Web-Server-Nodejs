@@ -149,6 +149,11 @@ module.exports = {
       store.users[id] = merge(original, user)
     },
     delete: async (id) => {
+      /*
+      const original = store.users[id]
+      if(!original) throw Error('Unregistered user id')
+      delete store.users[id]
+      */
       if(!id) throw Error('Invalid user id')
       const original = await db.del(`users:${id}`)
      // const original = store.users[id]

@@ -66,7 +66,6 @@ app.get('/users', async (req, res) => {
 })
 
 app.post('/users', async (req, res) => {
-  console.log("ajout de Pierre")
   const user = await db.users.create(req.body)
   res.status(201).json(user)
 })
@@ -84,8 +83,7 @@ app.put('/users/:id', async (req, res) => {
 app.delete('/users/:id', async (req, res) => {
   
   const user = await db.users.delete(req.params.id)
-  res.json(user)
-  console.log(user)
+  //res.json(channel)
 })
 
 module.exports = app

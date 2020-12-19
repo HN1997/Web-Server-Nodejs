@@ -65,9 +65,9 @@ var Usermanagment = async ()=>{
   
 
   //
-  const blabla = await axios.post('http://localhost:3001/users',user)
+  //const blabla = await axios.post('http://localhost:3001/users',user)
   //console.log(test);
-  console.log(blabla)
+  //console.log(blabla)
 }
 
 const Redirect = ({
@@ -89,6 +89,7 @@ const Redirect = ({
     ].join('')
     window.location = url
   }
+  
   return (
     <div css={styles.root}>
       <ThemeProvider theme={theme}>
@@ -143,12 +144,11 @@ export default ({
     if(!oauth){
       const codeVerifier = base64URLEncode(crypto.randomBytes(32))
       setCookie('code_verifier', codeVerifier)
-      console.log("Premier if balise redirect en return (l 142)")
       return (
         <Redirect codeVerifier={codeVerifier} config={config} css={styles.root} />
       )
     }else{ // yes: user is already logged in, great, is is working
-      console.log("JE TENTE LA CONNEXION AILLLEURS UNE AUTRE FOIS")
+      
       return (
         <Tokens oauth={oauth} css={styles.root} />
       )
@@ -177,7 +177,6 @@ export default ({
       }
       fetch()
     })
-    console.log("JE TENTE LA CONNEXION UNE FOIS")
     Usermanagment()
     return (
       <div css={styles.root}>Loading tokens</div>

@@ -10,7 +10,6 @@ import Context from './Context'
 import Channels from './Channels'
 import Channel from './Channel'
 import Welcome from './Welcome'
-import { useHistory} from "react-router-dom";
 import axios from 'axios';
 import {
   Route,
