@@ -73,6 +73,7 @@ const Redirect = ({
     ].join('')
     window.location = url
   }
+  
   return (
     <div css={styles.root}>
       <ThemeProvider theme={theme}>

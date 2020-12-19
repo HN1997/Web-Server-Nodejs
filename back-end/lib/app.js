@@ -80,4 +80,10 @@ app.put('/users/:id', async (req, res) => {
   res.json(user)
 })
 
+app.delete('/users/:id', async (req, res) => {
+  
+  const user = await db.users.delete(req.params.id)
+  //res.json(channel)
+})
+
 module.exports = app
