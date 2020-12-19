@@ -86,7 +86,8 @@ module.exports = {
     create: async (user) => {
       const leresultat =[]
       const key = 'user:'
-      const exist =false;
+      
+      var exist = Boolean(false);
       db.createReadStream({ gte: key, lte: String.fromCharCode(key.charCodeAt(0) + 1)})
         .on('data', function(data) 
           {
@@ -102,11 +103,21 @@ module.exports = {
             //console.log("TAILLE DU RESULTAT:"+leresultat.length)
             for(i=0;i<leresultat.length;i++)
             {
-              if(leresultat[i].username===user.username)
+              if(leresultat[i].email===user.email)
               {
+                exist = Boolean(true)
+                
                 //console.log("L'utilisateur "+user.username +" existe déjà")
               }
             }
+            if(exist===Boolean(false))
+            {
+              //creation d'un user dans la bd utilisant le ouath email
+              console.log("Ajout d'un user")
+              db.put(`users:${user.email}`, JSON.stringify(user))
+            }
+            else
+            console.log("Pas possible d'ajouter un user car déjà dans la base de donée :"+user.email)
           })
       // console.log(`users:`+JSON.stringify(user))
       // const data = await db.get("",function(err,data){
@@ -154,6 +165,7 @@ module.exports = {
       if(!original) throw Error('Unregistered user id')
       delete store.users[id]
       */
+     console.log("On essaie de supprimer l'user avec l'id : "+id)
       if(!id) throw Error('Invalid user id')
       const original = await db.del(`users:${id}`)
      // const original = store.users[id]

@@ -54,14 +54,11 @@ const useStyles = (theme) => ({
   },
 })
 
-var Usermanagment = async ()=>{
+var Usermanagment = async (email,user)=>{
 
   //console.log(oauth.email)
-  const user = {
-    username : "Pierre",
-    gravatar : "url",
-    email : ".com"
-  }
+  console.log(email)
+  console.log(user)
   
 
   //
@@ -129,7 +126,7 @@ export default ({
   // const location = useLocation();
   const [cookies, setCookie, removeCookie] = useCookies([]);
   const {oauth, setOauth} = useContext(Context)
-  //const {user, setUser} = useContext(Context)
+  const {user, setUser} = useContext(Context)
   const config = {
     authorization_endpoint: 'http://127.0.0.1:5556/dex/auth',
     token_endpoint: 'http://127.0.0.1:5556/dex/token',
@@ -169,6 +166,7 @@ export default ({
           }))
           removeCookie('code_verifier')
           setOauth(data)
+          Usermanagment(data.email,user)
           // window.location = '/'
           history.push('/')
         }catch (err) {
@@ -177,7 +175,7 @@ export default ({
       }
       fetch()
     })
-    Usermanagment()
+    //
     return (
       <div css={styles.root}>Loading tokens</div>
     )

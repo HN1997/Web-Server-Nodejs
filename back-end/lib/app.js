@@ -43,7 +43,7 @@ app.put('/channels/:id', async (req, res) => {
 app.delete('/channels/:id', async (req, res) => {
   
   const channel = await db.channels.delete(req.params.id)
-  //res.json(channel)
+  res.json(channel)
 })
 
 // Messages
@@ -83,7 +83,7 @@ app.put('/users/:id', async (req, res) => {
 app.delete('/users/:id', async (req, res) => {
   
   const user = await db.users.delete(req.params.id)
-  //res.json(channel)
+  res.json(user)
 })
 
 module.exports = app

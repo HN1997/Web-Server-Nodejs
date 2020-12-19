@@ -1,4 +1,4 @@
-#!/bin/env node
+#!env node
 
 HOME=`pwd`/`dirname ${BASH_SOURCE}`
 rm -r $HOME/../db
