@@ -58,8 +58,11 @@ var Usermanagment = async ()=>{
 
   //console.log(oauth.email)
   const user = {
-    username : "Pierre"
+    username : "Pierre",
+    gravatar : "url",
+    email : ".com"
   }
+  
 
   //
   const blabla = await axios.post('http://localhost:3001/users',user)
@@ -125,6 +128,7 @@ export default ({
   // const location = useLocation();
   const [cookies, setCookie, removeCookie] = useCookies([]);
   const {oauth, setOauth} = useContext(Context)
+  //const {user, setUser} = useContext(Context)
   const config = {
     authorization_endpoint: 'http://127.0.0.1:5556/dex/auth',
     token_endpoint: 'http://127.0.0.1:5556/dex/token',

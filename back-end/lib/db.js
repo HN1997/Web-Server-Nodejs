@@ -84,14 +84,41 @@ module.exports = {
   },
   users: {
     create: async (user) => {
-      const data = await db.get(`users:`+JSON.stringify(user))
-      console.log(data)
-      console.log("j'essaie de get tout les pierre")
+      const leresultat =[]
+      const key = 'user:'
+      const exist =false;
+      db.createReadStream({ gte: key, lte: String.fromCharCode(key.charCodeAt(0) + 1)})
+        .on('data', function(data) 
+          {
+          //console.log(typeof data.value)
+          //console.log(typeof JSON.parse(data.value))
+          leresultat.push(JSON.parse(data.value))
+          //console.log("push :"+leresultat.length)
+          //console.log("le resultat est :"+ JSON.stringify(leresultat[leresultat.length-1]))
+          //console.log("le username de resultat est :"+leresultat[leresultat.length-1])
+          })
+        .on('end',()=>
+          {
+            //console.log("TAILLE DU RESULTAT:"+leresultat.length)
+            for(i=0;i<leresultat.length;i++)
+            {
+              if(leresultat[i].username===user.username)
+              {
+                //console.log("L'utilisateur "+user.username +" existe déjà")
+              }
+            }
+          })
+      // console.log(`users:`+JSON.stringify(user))
+      // const data = await db.get("",function(err,data){
+      //   console.log("le quoi faire et le contenu du get : " + data)
+      // })
+      // console.log("le resultat : " + data)
+      // console.log("j'essaie de get tout les pierre")
       
-      if(!user.username) throw Error('Invalid user')
-      const id = uuid()
-      await db.put(`users:${id}`, JSON.stringify(user))
-      return merge(user, {id: id})
+      //if(!user.username) throw Error('Invalid user')
+      //const id = uuid()
+      //await db.put(`users:${id}`, JSON.stringify(user))
+      //return merge(user, {id: id})
     },
     get: async (id) => {
       if(!id) throw Error('Invalid id')
