@@ -37,23 +37,24 @@ const managementUser = async (oauth) => {
     async response => {
       collectionUsers = response.data
     }
-  );z
+  );
 
   var checkIfUserExists = false;
 
   //On parcourt les users un par un et on recupere leur username
+  /*
   var a = collectionUsers.length ?
     collectionUsers.map(collectionUsers => { axios.delete('http://localhost:3001/users/'+collectionUsers.id)
-        /*
-        if(collectionUsers.username === collectionUsers.username){
-          checkIfUserExists = true;
+        
+        // if(collectionUsers.username === collectionUsers.username){
+        //   checkIfUserExists = true;
           
-        }
-        */
+        // }
       }
     ) :
     null
-
+    */
+  /*
   //Si l'utilisateur n'existe pas dans la bdd, on le cree
   if(checkIfUserExists === false) {
     console.log("hey!");
@@ -62,6 +63,7 @@ const managementUser = async (oauth) => {
     }
     axios.post('http://localhost:3001/users', user);
   }
+  */
   /*
   //Sinon le rajouter
   const user = {
