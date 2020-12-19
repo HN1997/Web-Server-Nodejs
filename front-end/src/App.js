@@ -30,51 +30,6 @@ const styles = {
   },
 }
 
-const managementUser = async (oauth) => {
-  //On recupere tout ce qu il y a dans les users
-  var collectionUsers = [{}]
-  await axios.get('http://localhost:3001/users').then(
-    async response => {
-      collectionUsers = response.data
-    }
-  );
-
-  var checkIfUserExists = false;
-
-  //On parcourt les users un par un et on recupere leur username
-  /*
-  var a = collectionUsers.length ?
-    collectionUsers.map(collectionUsers => { axios.delete('http://localhost:3001/users/'+collectionUsers.id)
-        
-        // if(collectionUsers.username === collectionUsers.username){
-        //   checkIfUserExists = true;
-          
-        // }
-      }
-    ) :
-    null
-    */
-  /*
-  //Si l'utilisateur n'existe pas dans la bdd, on le cree
-  if(checkIfUserExists === false) {
-    console.log("hey!");
-    const user = {
-      username: 'mathilde'
-    }
-    axios.post('http://localhost:3001/users', user);
-  }
-  */
-  /*
-  //Sinon le rajouter
-  const user = {
-    username: oauth.email
-  }
-  console.log(user);
-  await axios.post('http://localhost:3001/users', user)
-  //console.log(data);
-  */
-}
-
 export default () => {
   const location = useLocation()
   const { oauth } = useContext(Context)
@@ -83,26 +38,6 @@ export default () => {
     setDrawerMobileVisible(!drawerMobileVisible)
   }
   const {user} = useContext(Context);
-  console.log(user);
-
-  if (oauth) {
-    managementUser(oauth);
-  }
-
-  //console.log(user.email);
-  /*
-  const [user, setUser] = useState(
-    {
-        img: "https://i.stack.imgur.com/frlIf.png",
-        userName: "defautUserName",
-        email: "defaultEmail",
-    }
-  )
-  if(oauth){
-    user.email = oauth.email;
-    user.userName = oauth.email;
-  }
-  */
 
   return (
     <div className="App" css={styles.root}>
