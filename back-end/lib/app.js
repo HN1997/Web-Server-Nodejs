@@ -66,6 +66,7 @@ app.get('/users', async (req, res) => {
 })
 
 app.post('/users', async (req, res) => {
+  console.log("ajout de Pierre")
   const user = await db.users.create(req.body)
   res.status(201).json(user)
 })
@@ -83,7 +84,12 @@ app.put('/users/:id', async (req, res) => {
 app.delete('/users/:id', async (req, res) => {
   
   const user = await db.users.delete(req.params.id)
+<<<<<<< HEAD
   //res.json(channel)
+=======
+  res.json(user)
+  console.log(user)
+>>>>>>> 3991e88dd6154e4912780e01f317a3dbcfa6d00a
 })
 
 module.exports = app
