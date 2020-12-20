@@ -13,8 +13,9 @@
     "axios": "^0.21.0",
     "dayjs": "^1.9.4",
     "github-username": "^5.0.1",
+    "node-localstorage": "^2.1.6",
     "qs": "^6.9.4",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -22,6 +23,7 @@
     "rehype-stringify": "^8.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
+    "store": "^2.0.12",
     "typeface-roboto": "^1.1.13",
     "unified": "^9.2.0"
   },

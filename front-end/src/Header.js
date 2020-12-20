@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Context from './Context'
 import { Avatar, Button, Typography } from '@material-ui/core';
+import store from 'store';
 
 const useStyles = (theme) => ({
   header: {
@@ -51,6 +52,7 @@ export default ({
   const AddGravatar = () => {
     window.location="/changinggravatar";
   };
+  const curUser = store.get('user');
   
   return (
     <header css={styles.header}>
@@ -66,10 +68,10 @@ export default ({
         oauth ?
           <span>
             <Typography color="primary" variant="h5">Welcome ! Connected as :</Typography>
-            {oauth.email}
+            {curUser.userName}
             <br></br>
               <Button onClick={AddGravatar}>
-                <Avatar src={props.img} alt="Image" style={{width:'40px'}}></Avatar>
+                <Avatar src={curUser.img} alt="Image" style={{width:'40px'}}></Avatar>
               </Button>
             <br></br>
             <Button variant="outlined" color="secondary" onClick={onClickLogout}>LOGOUT</Button>

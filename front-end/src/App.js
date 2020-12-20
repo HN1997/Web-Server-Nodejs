@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
+import React from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // Local
@@ -10,6 +11,7 @@ import Login from './Login'
 import Context from './Context'
 import AddGravatar from './AddGravatar';
 import axios from 'axios';
+import store from 'store';
 // Rooter
 import {
   Switch,
@@ -30,6 +32,7 @@ const styles = {
   },
 }
 
+
 export default () => {
   const location = useLocation()
   const { oauth } = useContext(Context)
@@ -37,11 +40,25 @@ export default () => {
   const drawerToggleListener = () => {
     setDrawerMobileVisible(!drawerMobileVisible)
   }
-  const {user} = useContext(Context);
+  
+  let curUser = store.get('user');
+  let usr = {}
+  if(oauth)
+  {
+    usr = axios.get(`http://localhost:3001/users/${oauth.email}`)
+    .then((response) => {
+      //console.log(response.data);
+      usr = response.data;
+      store.set('user', usr);
+    });
+    //console.log(usr);
+    //store.set('user', usr);
+  }
+  curUser = store.get('user');
 
   return (
     <div className="App" css={styles.root}>
-      <Header drawerToggleListener={drawerToggleListener} props={user}/>
+      <Header drawerToggleListener={drawerToggleListener} props={curUser}/>
       <Switch>
         <Route exact path="/">
           {
@@ -75,7 +92,7 @@ export default () => {
           <Oups />
         </Route>
         <Route path="/changinggravatar">
-          <AddGravatar props={user}/>
+          <AddGravatar props={curUser}/>
         </Route>
       </Switch>
       <Footer />

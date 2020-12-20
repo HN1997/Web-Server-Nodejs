@@ -5,6 +5,8 @@ import { useTheme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Context from './Context'
 import { useContext, useState } from 'react'
+import store from 'store'
+import axios from 'axios';
 
 const useStyles = (theme) => ({
   divroot: {
@@ -30,17 +32,19 @@ export default ({props}) => {
   const [gravatarUrl, setGravatarUrl] = useState(props.img);
 
   const changePictureOne = () => {
-    setGravatarUrl("https://octodex.github.com/images/dojocat.jpg");
+    props.img = "https://octodex.github.com/images/dojocat.jpg";
+    store.set('user', props);
+    window.location = "/changinggravatar";
   }
   const changePictureTwo = () => {
-    setGravatarUrl("https://octodex.github.com/images/gracehoppertocat.jpg");
+    props.img = "https://octodex.github.com/images/gracehoppertocat.jpg";
+    store.set('user', props);
+    window.location = "/changinggravatar";
   }
   const changePictureThree = () => {
-    setGravatarUrl("https://noahnyy.github.io/assets/img/sample/avatar.jpg");
-  }
-
-  const emailChange = (e) => {
-    setEmail(e.target.value)
+    props.img = "https://noahnyy.github.io/assets/img/sample/avatar.jpg";
+    store.set('user', props);
+    window.location = "/changinggravatar";
   }
   const nameChange = (e) => {
     setName(e.target.value)
@@ -49,11 +53,14 @@ export default ({props}) => {
     setGravatarUrl(e.target.value)
   }
 
-  const saveSettings = (e) => {
-    props.email = email;
+  const saveSettings = async (e) => {
     props.userName = name;
     props.img = gravatarUrl;
-    alert("Data saved! You can leave the page with the exit button :)");
+    store.set('user', props);
+    
+    await axios.put(`http://localhost:3001/users/${props.email}`,props);
+    
+    window.location= "/changinggravatar";
   }
 
   return (
@@ -72,9 +79,6 @@ export default ({props}) => {
           <Button onClick={changePictureThree}>
             <img src="https://noahnyy.github.io/assets/img/sample/avatar.jpg" style={{width:'40px'}}></img>
           </Button>
-        </Box>
-        <Box m={1} p={1}>
-          <TextField color="secondary" defaultValue={props.email} InputProps={styles.input} label="Email" variant="outlined" onChange={emailChange}></TextField>
         </Box>
         <Box m={1} p={1}>
           <TextField color="secondary" defaultValue={props.userName} InputProps={styles.input} label="Name" variant="outlined" onChange={nameChange}></TextField>

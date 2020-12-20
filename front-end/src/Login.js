@@ -17,6 +17,8 @@ import {Button, Typography} from '@material-ui/core'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import theme from './theme'
 import {ThemeProvider} from '@material-ui/core/styles';
+import localStorage from 'node-localstorage';
+import store from 'store';
 
 const base64URLEncode = (str) => {
   return str.toString('base64')
@@ -62,9 +64,9 @@ var Usermanagment = async (email,user)=>{
   user.userName=email
   //console.log(email)
   //console.log(user
-  await axios.post('http://localhost:3001/users',user).then(
-    user = await axios.get(`http://localhost:3001/users/${user.email}`)
-  )
+  await axios.post('http://localhost:3001/users',user)
+  user = await axios.get(`http://localhost:3001/users/${user.email}`)
+  
   //console.log(test);
   //console.log(blabla)
 }
@@ -169,6 +171,7 @@ export default ({
           removeCookie('code_verifier')
           setOauth(data)
           Usermanagment(data.email,user)
+          store.set('user', user);
           // window.location = '/'
           history.push('/')
         }catch (err) {
