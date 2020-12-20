@@ -34,17 +34,17 @@ export default ({props}) => {
   const changePictureOne = () => {
     props.img = "https://octodex.github.com/images/dojocat.jpg";
     store.set('user', props);
-    window.location = "/changinggravatar";
+    window.location = "/ChangeSettings";
   }
   const changePictureTwo = () => {
     props.img = "https://octodex.github.com/images/gracehoppertocat.jpg";
     store.set('user', props);
-    window.location = "/changinggravatar";
+    window.location = "/ChangeSettings";
   }
   const changePictureThree = () => {
     props.img = "https://noahnyy.github.io/assets/img/sample/avatar.jpg";
     store.set('user', props);
-    window.location = "/changinggravatar";
+    window.location = "/ChangeSettings";
   }
   const nameChange = (e) => {
     setName(e.target.value)
@@ -60,7 +60,7 @@ export default ({props}) => {
     
     await axios.put(`http://localhost:3001/users/${props.email}`,props);
     
-    window.location= "/changinggravatar";
+    window.location= "/ChangeSettings";
   }
 
   return (

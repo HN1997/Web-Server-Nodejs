@@ -9,7 +9,7 @@ import Header from './Header'
 import Main from './Main'
 import Login from './Login'
 import Context from './Context'
-import AddGravatar from './AddGravatar';
+import ChangeSettings from './ChangeSettings';
 import axios from 'axios';
 import store from 'store';
 // Rooter
@@ -91,8 +91,8 @@ export default () => {
         <Route path="/Oups">
           <Oups />
         </Route>
-        <Route path="/changinggravatar">
-          <AddGravatar props={curUser}/>
+        <Route path="/ChangeSettings">
+          <ChangeSettings props={curUser}/>
         </Route>
       </Switch>
       <Footer />

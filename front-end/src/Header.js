@@ -50,7 +50,7 @@ export default ({
     setOauth(null)
   }
   const AddGravatar = () => {
-    window.location="/changinggravatar";
+    window.location="/ChangeSettings";
   };
   const curUser = store.get('user');
   
