@@ -122,6 +122,11 @@ module.exports = {
         })
       })
     },
+    delete: async (channelid,id) => {
+      if(!id) throw Error('Invalid id')
+      const data = await db.get(`messages:${channelid}:${id}`)
+      console.log(data)
+      }
   },
   users: {
     create: async (user) => {
