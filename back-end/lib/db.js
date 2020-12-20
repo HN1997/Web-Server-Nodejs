@@ -124,20 +124,20 @@ module.exports = {
     },
     delete: async (channelid,id) => {
       if(!id) throw Error('Invalid id')
-      console.log(channelid)
-      console.log(id)
+      //console.log(channelid)
+      //console.log(id)
       const data = await db.del(`messages:${channelid}:${id}`)
       //console.log(data)
       },
     update: async (channelid,msgid,body) => {
       //if(!id) throw Error('Invalid id')
-      console.log(channelid)
-      console.log(body)
+      //console.log(channelid)
+      //console.log(body)
       var data = await db.get(`messages:${channelid}:${msgid}`)
       var data1 = JSON.parse(data)
-      console.log(data)
-      console.log(data1)
-      console.log(data1.author)
+      //console.log(data)
+      //console.log(data1)
+      //console.log(data1.author)
       await db.del(`messages:${channelid}:${msgid}`)
       await db.put(`messages:${channelid}:${msgid}`, JSON.stringify({
         author: data1.author,
@@ -249,7 +249,7 @@ module.exports = {
       if(!original) throw Error('Unregistered user id')
       delete store.users[id]
       */
-     console.log("On essaie de supprimer l'user avec l'id : "+id)
+     //console.log("On essaie de supprimer l'user avec l'id : "+id)
       if(!id) throw Error('Invalid user id')
       const original = await db.del(`users:${id}`)
      // const original = store.users[id]

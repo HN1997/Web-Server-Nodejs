@@ -63,7 +63,7 @@ var Usermanagment = async (email,user)=>{
   user.email=email
   user.userName=email
   //console.log(email)
-  console.log("management du user")
+  //console.log("management du user")
   await axios.post('http://localhost:3001/users',user)
   user = await axios.get(`http://localhost:3001/users/${user.email}`)
   store.set('user', user);

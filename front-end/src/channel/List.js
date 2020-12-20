@@ -94,7 +94,7 @@ export default forwardRef(({
   })
   return (
     <div css={styles.root} ref={rootEl}>
-      <h1>You are in => {channel.name}</h1>
+      <h1>You are in ={'>'} {channel.name}</h1>
       <h2> 
           {
             // for(i=0;i<channel.emails.length;i++)
@@ -124,8 +124,8 @@ export default forwardRef(({
                 if(message.author !== props.email){
                   alert("It's not your own message!");
                 } else {
-                  console.log(idCurrentChannel);
-                  console.log(message.creation);
+                  //console.log(idCurrentChannel);
+                  //console.log(message.creation);
                   await axios.delete(`http://localhost:3001/messages/${idCurrentChannel}/${message.creation}`)
                   alert("Message deleted!");
                   window.location = `${idCurrentChannel}`;
@@ -135,7 +135,7 @@ export default forwardRef(({
 
             //Update Message Button
             var modifyButton = async () => {
-              console.log(message.creation);
+              //console.log(message.creation);
               if(message.author !== props.email){
                 alert("It's not your own message!");
               } else {
