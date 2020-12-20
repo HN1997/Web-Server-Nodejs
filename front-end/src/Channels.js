@@ -67,7 +67,7 @@ export default () => {
               if(confirmBox){
                 console.log(channel.name + " deleted")
                 const {data: {id}} = await axios.delete(`http://localhost:3001/channels/${channel.id}`)
-               
+                window.location="/";
               }
             }}>
               <DeleteForever fontSize="small" color="secondary" css={styles.settingsIconStyle}></DeleteForever>
