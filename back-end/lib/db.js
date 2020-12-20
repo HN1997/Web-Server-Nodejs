@@ -132,8 +132,14 @@ module.exports = {
     },
     get: async (id) => {
       if(!id) throw Error('Invalid id')
+      var data
       try{
-        const data = await db.get(`users:${id}`)
+         data = await db.get(`users:${id}`)
+         if(data)
+          {
+          const user = JSON.parse(data)
+          return merge(user, {id: id})
+          }
       }
       catch(ex)
       {
@@ -141,16 +147,12 @@ module.exports = {
         console.log(ex.message)
         return ""
       }
-      if(data)
-      {
-      const user = JSON.parse(data)
-      return merge(user, {id: id})
-      }
-      else
-      {
-        console.log("no user with this email address")
-        return ""
-      }
+      
+      // else
+      // {
+      //   console.log("no user with this email address")
+      //   return ""
+      // }
     },
     list: async () => {
       return new Promise( (resolve, reject) => {
