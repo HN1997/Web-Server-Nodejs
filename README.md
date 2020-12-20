@@ -4,9 +4,8 @@
  * "ECE Chat App" has for main goal to propose a channel oriented chat experience to their user.
  *  The User may connect using a Oauth2 secured connection with his github account 
  *  He may then access the main feature of the app 
- *  Create and delete channels, write messages to his friends, edit his profile.
- 
- We hope to provide the user the possibility to have private channels in which he could invite his friends 
+ *  Create and delete channels, write messages to his friends, invite them into his channels, edit his profile.
+
  
  
 ## Usage
@@ -15,7 +14,7 @@
 
 * Clone this repository, from your local machine:
   ```
-  git clone https://github.com/adaltas/ece-2020-fall-webtech-project.git webtech
+  git clone https://github.com/HN1997/Web-Server-Nodejs.git
   cd webtech
   ```
 * Install [Go](https://golang.org/) and [Dex](https://dexidp.io/docs/getting-started/). For example, on Ubuntu, from your project root directory:   
@@ -54,8 +53,7 @@
   cd back-end
   # Install dependencies (use yarn or npm)
   yarn install
-  # Optional, fill the database with initial data
-  bin/init
+  # Do not use the init file
   # Start the back-end
   bin/start
   ```
@@ -78,46 +76,50 @@
 Project management
 
 * Naming convention   
-  *place your comments*
+  *We tried to follow the guidelines explained during the class for all of the project*
 * Project structure   
-  *place your comments*
+  *The project has been based on the template project provided the structure is kept*
 * Code quality   
-  *place your comments*
+  *We tried to follow the guidelines explained during the class for all of the project *
 * Design, UX   
-  *place your comments*
+  * We used meterial UI to provide a good user experience smooth and self explainatory*
 * Git and DevOps   
-  *place your comments*
+  * We used GitHub on a daily basis but we didn't used Devops tools or unit test*
 
 Application development
 
 * Welcome screens   
-  * The user when he connect to the plateform is redirect to a welcome page 
-  * He can see his email address at the top along with his gravatar
-  * Multiple settings are available (WIP)
+  * The user when he connects to the plateform is redirected to a welcome page where the rules and explanations on how to use the plateform are provided
+  * He can see his email address at the top along with his gravatar where he can click to access customisation of his profil
+  * He can access and create channels on the left
 * New channel creation   
   * The user _can_ create new channels, name them as he wants and write in them
 * Channel deletion
   * The user can delete a selected channel using a button linked to it 
 * Channel membership and access   
-  * (WIP)
+  * Only channels where the user has been invited (and the ones he created) are accessible by him
 * Ressource access control   
-  *
+  * A user can only gain access to channels he was invited to or to the one he created
+  * The Apis returns the appropriate channels  
 * Invite users to channels   
-  *place your comments*
+  * A user may invite a friend to a channel he created or have been invited to already, to do so he can click the button at the bottom of the channel message feed and enter his friend email address.
 * Message modification   
-  *place your comments*
+  * A user may modify its messages
+  * A user may not modify a message that he didn't send
 * Message removal   
-  *place your comments*
+  * A user may delete its messages
+  * A user may not delete a message that he didn't send
 * Account settings   
-  * The user can choose between a set of themes
-  * The user can change his username (set as default to his email address)
+  * The user can change his gravatar 
+  * The user can change his username 
+  * It is persistent data
 * Gravatar integration   
-  *place your comments*
+  * The user can use his gravatar by putting the link of his gravatar
 * Avatar selection   
-  *place your comments*
+  * The user can change his avatar with a set of default images (3) or put a link to a picture
 * Personal custom avatar   
-  *place your comments*
+  * A user may not upload a jpg (or other) file to the web app, only a link to the image he wants 
 
 ## Bonus
 
-*place your comments*
+* Not implemented*
