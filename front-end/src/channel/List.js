@@ -99,15 +99,35 @@ export default forwardRef(({
             .use(markdown)
             .use(remark2rehype)
             .use(html)
-            .processSync(message.content)
+            .processSync(message.content);
+            //Delete a message button
+            var supprBouton = () => {
+              var bool = window.confirm('Do you want to delete this message?');
+              if(bool){
+                if(message.author !== props.email){
+                  alert("It's not your own message!");
+                } else {
+                  alert("Message deleted!");
+                }
+              }
+            }
+            //Update Message Button
+            var modifyButton = () => {
+              console.log(message.creation);
+              if(message.author !== props.email){
+                alert("It's not your own message!");
+              } else {
+                alert("ok!");
+              }
+            }
             return (
               <li key={i} css={styles.message}>
                 <p>
                   <span>{message.author}</span>
                   {' - '}
                   <span>{dayjs().calendar(message.creation)}</span>
-                  <Button><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
-                  <Button><ChatBubbleIcon style={{width:'40px'}}></ChatBubbleIcon></Button>
+                  <Button onClick={supprBouton}><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
+                  <Button onClick={modifyButton}><ChatBubbleIcon style={{width:'40px'}}></ChatBubbleIcon></Button>
                 </p>
                 <div dangerouslySetInnerHTML={{__html: content}}>
                 </div>
