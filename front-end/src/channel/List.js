@@ -17,6 +17,7 @@ import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
 import moment from 'moment';
+import {Typography} from '@material-ui/core';
 dayjs.extend(calendar)
 dayjs.extend(updateLocale)
 dayjs.updateLocale('en', {
@@ -161,10 +162,10 @@ export default forwardRef(({
             return (
               <li key={i} css={styles.message}>
                 <p>
-                  <span>{message.author} at</span>
-                  <span> {heureMessageButton(message.creation)}</span>
-                  <Button onClick={supprBouton}><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
-                  <Button onClick={modifyButton}><ChatBubbleIcon style={{width:'40px'}}></ChatBubbleIcon></Button>
+                  <span css={{color:'red', fontStyle:"italic"}}>{message.author} at</span>
+                  <span css={{color:'orange', fontStyle:"italic"}}> {heureMessageButton(message.creation)}</span>
+                  <Button style={{marginLeft:"1rem"}} onClick={supprBouton} variant="outlined" color="secondary"><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
+                  <Button style={{marginLeft:"1rem"}} onClick={modifyButton} variant="outlined" color="secondary"><ChatBubbleIcon style={{width:'40px'}}></ChatBubbleIcon></Button>
                 </p>
                 <div dangerouslySetInnerHTML={{__html: content}}>
                 </div>
