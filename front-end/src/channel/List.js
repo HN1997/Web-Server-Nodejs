@@ -118,6 +118,7 @@ export default forwardRef(({
                   console.log(message.creation);
                   await axios.delete(`http://localhost:3001/messages/${idCurrentChannel}/${message.creation}`)
                   alert("Message deleted!");
+                  window.location = `${idCurrentChannel}`;
                 }
               }
             }
@@ -136,6 +137,7 @@ export default forwardRef(({
                     ctnt: newMsg
                   })
                   alert(`New message : ${newMsg}`);
+                  window.location = `${idCurrentChannel}`;
                 }
               }
             }
