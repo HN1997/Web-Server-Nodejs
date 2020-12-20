@@ -1,8 +1,14 @@
 
 # Chat application - final project
 
-*presentation, introduction, ...*
-
+ * "ECE Chat App" has for main goal to propose a channel oriented chat experience to their user.
+ *  The User may connect using a Oauth2 secured connection with his github account 
+ *  He may then access the main feature of the app 
+ *  Create and delete channels, write messages to his friends, edit his profile.
+ 
+ We hope to provide the user the possibility to have private channels in which he could invite his friends 
+ 
+ 
 ## Usage
 
 *how to start and use the application, run the tests, ...*
@@ -62,9 +68,10 @@
   yarn start
   ```
 
-## Author
+## Authors
 
-*name, email, ...*
+* Camugli Pierre, pierre.camugli@edu.ece.fr, PierreC12033
+* Navillod Hugo, hugo.navillod@edu.ece.fr, HN1997
 
 ## Tasks
 
@@ -84,13 +91,17 @@ Project management
 Application development
 
 * Welcome screens   
-  *place your comments*
+  * The user when he connect to the plateform is redirect to a welcome page 
+  * He can see his email address at the top along with his gravatar
+  * Multiple settings are available (WIP)
 * New channel creation   
-  *place your comments*
+  * The user _can_ create new channels, name them as he wants and write in them
+* Channel deletion
+  * The user can delete a selected channel using a button linked to it 
 * Channel membership and access   
-  *place your comments*
+  * (WIP)
 * Ressource access control   
-  *place your comments*
+  *
 * Invite users to channels   
   *place your comments*
 * Message modification   
@@ -98,7 +109,8 @@ Application development
 * Message removal   
   *place your comments*
 * Account settings   
-  *place your comments*
+  * The user can choose between a set of themes
+  * The user can change his username (set as default to his email address)
 * Gravatar integration   
   *place your comments*
 * Avatar selection   
