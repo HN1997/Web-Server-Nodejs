@@ -46,23 +46,10 @@ const useStyles = (theme) => ({
 })
 
 //When user click CREATE A CHANNEL button
-const onClickButton = async () => {
-  var channelName = prompt("Name of the new channel :");
-  if(channelName===null || channelName===""){
-    const txt = "Error, can't create a channel with an empty name.";
-    alert(txt);
-  }
-  else if(channelName!==null || channelName!==""){
-    const txt = channelName;
-    const {data: {id}} = await axios.post('http://localhost:3001/channels', {
-          name: txt
-    })
-    window.location="/channels";
-  }
-}
 
 
-export default () => {
+
+export default ({props}) => {
   const {
     currentChannel,
     drawerVisible,
@@ -71,7 +58,30 @@ export default () => {
   const styles = useStyles(theme)
   const alwaysOpen = useMediaQuery(theme.breakpoints.up('sm'))
   const isDrawerVisible = alwaysOpen || drawerVisible
-  
+
+  const onClickButton = async () => {
+    var channelName = prompt("Name of the new channel :");
+    var email = [] 
+    email.push(props.email)
+    console.log("le tableau :")
+    console.log(email)
+    if(channelName===null || channelName===""){
+      const txt = "Error, can't create a channel with an empty name.";
+      alert(txt);
+    }
+    else if(channelName!==null || channelName!==""){
+      const txt = channelName;
+      const {data: {id}} = await axios.post('http://localhost:3001/channels', {
+            name: txt,
+            emails: email
+      })
+      window.location="/channels";
+    }
+  }
+
+
+
+
   return (
     <main css={styles.root}>
       <Drawer

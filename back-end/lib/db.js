@@ -8,10 +8,18 @@ const db = level(__dirname + '/../db')
 module.exports = {
   channels: {
     create: async (channel) => {
-      if(!channel.name) throw Error('Invalid channel')
-      const id = uuid()
-      await db.put(`channels:${id}`, JSON.stringify(channel))
-      return merge(channel, {id: id})
+      if(channel.id){
+        console.log("update de channels")
+        await db.put(`channels:${channel.id}`, JSON.stringify(channel))
+        return merge(channel)
+      }
+      else{
+        console.log("creation d'une nouvelle channels")
+        if(!channel.name) throw Error('Invalid channel')
+        const id = uuid()
+        await db.put(`channels:${id}`, JSON.stringify(channel))
+        return merge(channel, {id: id})
+      }
     },
     get: async (id) => {
       if(!id) throw Error('Invalid id')
@@ -37,6 +45,16 @@ module.exports = {
       })
     },
     update: (id, channel) => {
+      
+      //get le channel
+      //on le met en objet
+      //on ajoute à emails l'email de l'utilisateur
+      //on delete la channel
+      //on recreer avec en parametre l'id => call create
+
+
+
+
       const original = store.channels[id]
       if(!original) throw Error('Unregistered channel id')
       store.channels[id] = merge(original, channel)

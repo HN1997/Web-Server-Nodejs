@@ -85,7 +85,7 @@ export default () => {
         <Route path="/channels">
           {
             oauth ? (
-              <Main />
+              <Main props={curUser} />
             ) : (
                 <Redirect
                   to={{
