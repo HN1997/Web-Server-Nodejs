@@ -76,15 +76,15 @@
 Project management
 
 * Naming convention   
-  *We tried to follow the guidelines explained during the class for all of the project*
+  * We tried to follow the guidelines explained during the class for all of the project 
 * Project structure   
-  *The project has been based on the template project provided the structure is kept*
+  * The project has been based on the template project provided the structure is kept 
 * Code quality   
-  *We tried to follow the guidelines explained during the class for all of the project *
+  * We tried to follow the guidelines explained during the class for all of the project 
 * Design, UX   
-  * We used meterial UI to provide a good user experience smooth and self explainatory*
+  * We used meterial UI to provide a good user experience smooth and self explainatory 
 * Git and DevOps   
-  * We used GitHub on a daily basis but we didn't used Devops tools or unit test*
+  * We used GitHub on a daily basis but we didn't used Devops tools or unit test 
 
 Application development
 
@@ -122,4 +122,4 @@ Application development
 
 ## Bonus
 
-* Not implemented*
+* Not implemented 
