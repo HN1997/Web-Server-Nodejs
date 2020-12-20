@@ -44,20 +44,28 @@ module.exports = {
         })
       })
     },
-    update: (id, channel) => {
-      
-      //get le channel
-      //on le met en objet
-      //on ajoute à emails l'email de l'utilisateur
+    update: async (id, email) => {
+      //Ajout d'un utilisateur à une channel
+      //get le channel et on le met en objet
+      if(!id) throw Error('Invalid id')
+      const data = await db.get(`channels:${id}`)
+      var channel = JSON.parse(data)
+      channel = merge(channel, {id: id})
+      console.log(email)
+      console.log(channel.emails)
+      //on ajoute à emails l'email de l'utilisateur à ajouter
+      channel.emails.push(email.email)
+      console.log(channel)
       //on delete la channel
+      const data1 = await db.del(`channels:${id}`)
       //on recreer avec en parametre l'id => call create
+      await db.put(`channels:${id}`, JSON.stringify(channel))
 
 
 
-
-      const original = store.channels[id]
-      if(!original) throw Error('Unregistered channel id')
-      store.channels[id] = merge(original, channel)
+      //const original = store.channels[id]
+      //if(!original) throw Error('Unregistered channel id')
+      //store.channels[id] = merge(original, channel)
     },
     delete: async (id) => {
     
