@@ -15,6 +15,7 @@ import calendar from 'dayjs/plugin/calendar'
 import updateLocale from 'dayjs/plugin/updateLocale'
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import axios from 'axios';
 dayjs.extend(calendar)
 dayjs.extend(updateLocale)
 dayjs.updateLocale('en', {
@@ -100,19 +101,29 @@ export default forwardRef(({
             .use(remark2rehype)
             .use(html)
             .processSync(message.content);
+
+            //Get Channel id
+            var locationActuelle = window.location.pathname;
+            var paths = locationActuelle.split("/");
+            var idCurrentChannel = paths[2];
+
             //Delete a message button
-            var supprBouton = () => {
+            var supprBouton = async () => {
               var bool = window.confirm('Do you want to delete this message?');
               if(bool){
                 if(message.author !== props.email){
                   alert("It's not your own message!");
                 } else {
+                  console.log(idCurrentChannel);
+                  console.log(message.creation);
+                  await axios.delete(`http://localhost:3001/messages/${idCurrentChannel}/${message.creation}`)
                   alert("Message deleted!");
                 }
               }
             }
+
             //Update Message Button
-            var modifyButton = () => {
+            var modifyButton = async () => {
               console.log(message.creation);
               if(message.author !== props.email){
                 alert("It's not your own message!");
