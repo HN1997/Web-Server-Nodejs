@@ -16,6 +16,7 @@ import updateLocale from 'dayjs/plugin/updateLocale'
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import axios from 'axios';
+import moment from 'moment';
 dayjs.extend(calendar)
 dayjs.extend(updateLocale)
 dayjs.updateLocale('en', {
@@ -150,12 +151,18 @@ export default forwardRef(({
                 }
               }
             }
+
+            var heureMessageButton = (date) => {
+              var x = Number(date); 
+              var x2 = (x/1000);
+              var t = moment(x2).format('DD-MM-YYYY H:mm:ss');
+              return t;
+            }
             return (
               <li key={i} css={styles.message}>
                 <p>
-                  <span>{message.author}</span>
-                  {' - '}
-                  <span>{dayjs().calendar(message.creation)}</span>
+                  <span>{message.author} at</span>
+                  <span> {heureMessageButton(message.creation)}</span>
                   <Button onClick={supprBouton}><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
                   <Button onClick={modifyButton}><ChatBubbleIcon style={{width:'40px'}}></ChatBubbleIcon></Button>
                 </p>

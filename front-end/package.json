@@ -13,6 +13,8 @@
     "axios": "^0.21.0",
     "dayjs": "^1.9.4",
     "github-username": "^5.0.1",
+    "moment": "^2.29.1",
+    "momentjs": "^2.0.0",
     "node-localstorage": "^2.1.6",
     "qs": "^6.9.4",
     "react": "^16.14.0",
