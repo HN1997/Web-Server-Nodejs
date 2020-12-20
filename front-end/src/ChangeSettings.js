@@ -71,13 +71,13 @@ export default ({props}) => {
         </Box>
         <Box m={1} p={1}>
           <Button onClick={changePictureOne}>
-            <img src="https://octodex.github.com/images/dojocat.jpg" style={{width:'40px'}}></img>
+            <img src="https://octodex.github.com/images/dojocat.jpg" style={{width:'60px'}}></img>
           </Button>
           <Button onClick={changePictureTwo}>
-            <img src="https://octodex.github.com/images/gracehoppertocat.jpg" style={{width:'40px'}}></img>
+            <img src="https://octodex.github.com/images/gracehoppertocat.jpg" style={{width:'60px'}}></img>
           </Button>
           <Button onClick={changePictureThree}>
-            <img src="https://noahnyy.github.io/assets/img/sample/avatar.jpg" style={{width:'40px'}}></img>
+            <img src="https://noahnyy.github.io/assets/img/sample/avatar.jpg" style={{width:'60px'}}></img>
           </Button>
         </Box>
         <Box m={1} p={1}>
