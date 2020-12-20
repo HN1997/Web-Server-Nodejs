@@ -27,7 +27,9 @@ module.exports = {
       const channel = JSON.parse(data)
       return merge(channel, {id: id})
     },
-    list: async () => {
+    list: async (body) => {
+      console.log(body)
+      var is_user=Boolean(false)
       return new Promise( (resolve, reject) => {
         const channels = []
         db.createReadStream({
@@ -36,6 +38,19 @@ module.exports = {
         }).on( 'data', ({key, value}) => {
           channel = JSON.parse(value)
           channel.id = key.split(':')[1]
+          console.log(channel)
+          is_user=Boolean(false)
+          for(i=0;i<channel.emails.length;i++)
+          {
+            console.log("il y a un email")
+            console.log(channel.emails[i])
+            if(channel.emails[i]===body)
+            {
+              console.log("jtaitrouvéfdp")
+              is_user=Boolean(true)
+            }
+          }
+          if(is_user)
           channels.push(channel)
         }).on( 'error', (err) => {
           reject(err)
