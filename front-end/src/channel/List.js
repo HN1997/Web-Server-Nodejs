@@ -103,7 +103,7 @@ export default forwardRef(({
             return (
               <li key={i} css={styles.message}>
                 <p>
-                  <span>{props.userName}</span>
+                  <span>{message.author}</span>
                   {' - '}
                   <span>{dayjs().calendar(message.creation)}</span>
                   <Button><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
