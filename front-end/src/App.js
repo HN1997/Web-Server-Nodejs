@@ -45,12 +45,16 @@ export default () => {
   let usr = {}
   if(oauth)
   {
+    try{
     usr = axios.get(`http://localhost:3001/users/${oauth.email}`)
     .then((response) => {
       //console.log(response.data);
       usr = response.data;
       store.set('user', usr);
     });
+    } catch(err){
+      console.log(err);
+    }
     //console.log(usr);
     //store.set('user', usr);
   }
