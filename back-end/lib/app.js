@@ -60,9 +60,9 @@ app.post('/channels/:id/messages', async (req, res) => {
   res.status(201).json(message)
 })
 app.delete('/messages/:id', async (req, res) => {
-  //console.log("app")
-  //console.log(req.params.id)
-  //console.log(req.body)
+  console.log("app")
+  console.log(req.params.id)
+  console.log(req.body)
   const message = await db.messages.delete(req.params.id,req.body)
   res.json(message)
 })
