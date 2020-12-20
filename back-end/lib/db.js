@@ -164,7 +164,7 @@ module.exports = {
               db.put(`users:${user.email}`, JSON.stringify(user))
             }
             else
-            //console.log("Pas possible d'ajouter un user car déjà dans la base de donée :"+user.email)
+            console.log("Pas possible d'ajouter un user car déjà dans la base de donée :"+user.email)
           })
       // console.log(`users:`+JSON.stringify(user))
       // const data = await db.get("",function(err,data){
