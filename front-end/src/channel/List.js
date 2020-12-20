@@ -128,7 +128,15 @@ export default forwardRef(({
               if(message.author !== props.email){
                 alert("It's not your own message!");
               } else {
-                alert("ok!");
+                let newMsg = window.prompt("Enter your new message : ");
+                if(newMsg===null || newMsg===""){
+                  alert("Message empty! Message modification aborted.")
+                } else {
+                  await axios.put(`http://localhost:3001/messages/${idCurrentChannel}/${message.creation}`,{
+                    ctnt: newMsg
+                  })
+                  alert(`New message : ${newMsg}`);
+                }
               }
             }
             return (
