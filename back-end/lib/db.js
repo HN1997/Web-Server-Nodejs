@@ -128,6 +128,23 @@ module.exports = {
       //console.log(id.msgid)
       const data = await db.del(`messages:${channelid}:${id.msgid}`)
       //console.log(data)
+      },
+    update: async (channelid,body) => {
+      //if(!id) throw Error('Invalid id')
+      console.log(channelid)
+      console.log(body)
+      var data = await db.get(`messages:${channelid}:${body.msgid}`)
+      var data1 = JSON.parse(data)
+      console.log(data)
+      console.log(data1)
+      console.log(data1.author)
+      await db.del(`messages:${channelid}:${body.msgid}`)
+      await db.put(`messages:${channelid}:${body.msgid}`, JSON.stringify({
+        author: data1.author,
+        content: body.ctnt
+      }))
+
+
       }
   },
   users: {
