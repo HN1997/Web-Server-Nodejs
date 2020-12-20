@@ -41,7 +41,11 @@ export default () => {
     setDrawerMobileVisible(!drawerMobileVisible)
   }
   
-  let curUser = store.get('user');
+  let curUser = {
+    img: "https://i.stack.imgur.com/frlIf.png",
+    userName: "defautUserName",
+    email: "defaultEmail",
+  };
   let usr = {}
   if(oauth)
   {

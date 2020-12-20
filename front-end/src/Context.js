@@ -50,7 +50,7 @@ export const Provider = ({
         setCurrentChannel(channel)
       },
       user: user,
-      setUser: setUser,
+      setUser: (user) => {},
     }}>{children}</Context.Provider>
   )
 }

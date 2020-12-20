@@ -143,7 +143,7 @@ module.exports = {
       }
       catch(ex)
       {
-        console.log("BLYAT")
+        console.log("user not found")
         console.log(ex.message)
         return ""
       }

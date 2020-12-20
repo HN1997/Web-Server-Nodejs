@@ -63,10 +63,10 @@ var Usermanagment = async (email,user)=>{
   user.email=email
   user.userName=email
   //console.log(email)
-  //console.log(user
+  console.log("management du user")
   await axios.post('http://localhost:3001/users',user)
   user = await axios.get(`http://localhost:3001/users/${user.email}`)
-  
+  store.set('user', user);
   //console.log(test);
   //console.log(blabla)
 }
@@ -170,8 +170,8 @@ export default ({
           }))
           removeCookie('code_verifier')
           setOauth(data)
-          Usermanagment(data.email,user)
-          store.set('user', user);
+          await Usermanagment(data.email,user)
+          
           // window.location = '/'
           history.push('/')
         }catch (err) {
