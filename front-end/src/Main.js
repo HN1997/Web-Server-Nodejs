@@ -62,7 +62,7 @@ const onClickButton = async () => {
 }
 
 
-export default () => {
+export default ({props}) => {
   const {
     currentChannel,
     drawerVisible,
@@ -91,7 +91,7 @@ export default () => {
       </Drawer>
       <Switch>
         <Route path="/channels/:id">
-          <Channel />
+          <Channel props={props}/>
         </Route>
         <Route path="/">
           <Welcome />
