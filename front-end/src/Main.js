@@ -48,7 +48,6 @@ const useStyles = (theme) => ({
 //When user click CREATE A CHANNEL button
 
 
-
 export default ({props}) => {
   const {
     currentChannel,
@@ -101,7 +100,7 @@ export default ({props}) => {
       </Drawer>
       <Switch>
         <Route path="/channels/:id">
-          <Channel />
+          <Channel props={props}/>
         </Route>
         <Route path="/">
           <Welcome />

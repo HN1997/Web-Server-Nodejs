@@ -11,6 +11,7 @@ import Form from './channel/Form'
 import List from './channel/List'
 import Context from './Context'
 import { useHistory, useParams } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 
 const useStyles = (theme) => ({
   root: {
@@ -31,7 +32,7 @@ const useStyles = (theme) => ({
   }
 })
 
-export default () => {
+export default ({props}) => {
   const history = useHistory()
   const { id } = useParams()
   const {channels} = useContext(Context)
@@ -66,6 +67,34 @@ export default () => {
   const onClickScroll = () => {
     listRef.current.scroll()
   }
+  const AddUserButton = async () => {
+    var email = prompt("Invite a Friend with his email : ");
+    if(email === null || email===""){
+      //Si le champs est vide
+      alert("Oups, empty field!")
+    }
+    else{
+      //Regarder si il existe dans la bdd et pas l'utilisateur actuel
+      var userExit = false;
+      var userToAdd = await axios.get(`http://localhost:3001/users/${email}`);
+      var thisUser =  await axios.get(`http://localhost:3001/users/${props.email}`);
+      var thisUserEmail = thisUser.data.email;
+
+      //Si l'utilisateur n'existe pas dans la bdd
+      if(userToAdd.data === "" || userToAdd === null){
+        alert("Oups, user does not exit!");
+      }
+      //Si il essaye de s'ajouter soi meme
+      else if(userToAdd.data.email === thisUserEmail){
+        alert("You can't add yourself!");
+      }
+      //Il peut ajouter un nouvel user
+      else{
+        alert(`User ${userToAdd.data.email} added to the chat!`);
+      }
+    }
+  }
+  
   return (
     <div css={styles.root}>
       <List
@@ -83,6 +112,7 @@ export default () => {
       >
         <ArrowDropDownIcon />
       </Fab>
+      <Button onClick={AddUserButton} variant="outlined" color="secondary">Invite A Friend!</Button>
     </div>
   );
 }
