@@ -124,9 +124,9 @@ module.exports = {
     },
     delete: async (channelid,id) => {
       if(!id) throw Error('Invalid id')
-      //console.log(channelid)
-      //console.log(id.msgid)
-      const data = await db.del(`messages:${channelid}:${id.msgid}`)
+      console.log(channelid)
+      console.log(id)
+      const data = await db.del(`messages:${channelid}:${id}`)
       //console.log(data)
       }
   },

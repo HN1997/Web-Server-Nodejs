@@ -116,10 +116,7 @@ export default forwardRef(({
                 } else {
                   console.log(idCurrentChannel);
                   console.log(message.creation);
-                  
-                  await axios.delete(`http://localhost:3001/messages/${idCurrentChannel}`,{
-                    msgid: `${message.creation}`
-                  })
+                  await axios.delete(`http://localhost:3001/messages/${idCurrentChannel}/${message.creation}`)
                   alert("Message deleted!");
                 }
               }
