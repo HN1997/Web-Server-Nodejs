@@ -26,8 +26,8 @@ app.get('/channels', authenticate, async (req, res) => {
 })
 
 app.post('/channels', async (req, res) => {
-  console.log("ajout channel params")
-  console.log(req.body)
+  //console.log("ajout channel params")
+  //console.log(req.body)
   const channel = await db.channels.create(req.body)
   res.status(201).json(channel)
 })

@@ -9,12 +9,12 @@ module.exports = {
   channels: {
     create: async (channel) => {
       if(channel.id){
-        console.log("update de channels")
+        //console.log("update de channels")
         await db.put(`channels:${channel.id}`, JSON.stringify(channel))
         return merge(channel)
       }
       else{
-        console.log("creation d'une nouvelle channels")
+        //console.log("creation d'une nouvelle channels")
         if(!channel.name) throw Error('Invalid channel')
         const id = uuid()
         await db.put(`channels:${id}`, JSON.stringify(channel))
@@ -28,7 +28,7 @@ module.exports = {
       return merge(channel, {id: id})
     },
     list: async (body) => {
-      console.log(body)
+      //console.log(body)
       var is_user=Boolean(false)
       return new Promise( (resolve, reject) => {
         const channels = []
@@ -38,15 +38,15 @@ module.exports = {
         }).on( 'data', ({key, value}) => {
           channel = JSON.parse(value)
           channel.id = key.split(':')[1]
-          console.log(channel)
+          //console.log(channel)
           is_user=Boolean(false)
           for(i=0;i<channel.emails.length;i++)
           {
-            console.log("il y a un email")
-            console.log(channel.emails[i])
+            //console.log("il y a un email")
+            //console.log(channel.emails[i])
             if(channel.emails[i]===body)
             {
-              console.log("jtaitrouvéfdp")
+              //console.log("jtaitrouvéfdp")
               is_user=Boolean(true)
             }
           }
@@ -66,11 +66,11 @@ module.exports = {
       const data = await db.get(`channels:${id}`)
       var channel = JSON.parse(data)
       channel = merge(channel, {id: id})
-      console.log(email)
-      console.log(channel.emails)
+      //console.log(email)
+      //console.log(channel.emails)
       //on ajoute à emails l'email de l'utilisateur à ajouter
       channel.emails.push(email.email)
-      console.log(channel)
+      //console.log(channel)
       //on delete la channel
       const data1 = await db.del(`channels:${id}`)
       //on recreer avec en parametre l'id => call create
@@ -160,7 +160,7 @@ module.exports = {
             if(exist===Boolean(false))
             {
               //creation d'un user dans la bd utilisant le ouath email
-              console.log("Ajout d'un user")
+              //console.log("Ajout d'un user")
               db.put(`users:${user.email}`, JSON.stringify(user))
             }
             else
