@@ -17,7 +17,6 @@ import {Button, Typography} from '@material-ui/core'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import theme from './theme'
 import {ThemeProvider} from '@material-ui/core/styles';
-import localStorage from 'node-localstorage';
 import store from 'store';
 
 const base64URLEncode = (str) => {
@@ -130,7 +129,7 @@ export default ({
   // const location = useLocation();
   const [cookies, setCookie, removeCookie] = useCookies([]);
   const {oauth, setOauth} = useContext(Context)
-  const {user, setUser} = useContext(Context)
+  const {user} = useContext(Context)
   const config = {
     authorization_endpoint: 'http://127.0.0.1:5556/dex/auth',
     token_endpoint: 'http://127.0.0.1:5556/dex/token',

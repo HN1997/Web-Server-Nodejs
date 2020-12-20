@@ -71,7 +71,7 @@ export default () => {
               var confirmBox = window.confirm("Are you sure you want to delete this channel?")
               if(confirmBox){
                 console.log(channel.name + " deleted")
-                const {data: {id}} = await axios.delete(`http://localhost:3001/channels/${channel.id}`)
+                await axios.delete(`http://localhost:3001/channels/${channel.id}`)
                 window.location="/";
               }
             }}>

@@ -1,4 +1,4 @@
-import {useContext, useRef, useState, useEffect} from 'react';
+import {useContext, useRef, useState} from 'react';
 import axios from 'axios';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
@@ -75,7 +75,6 @@ export default ({props}) => {
     }
     else{
       //Regarder si il existe dans la bdd et pas l'utilisateur actuel
-      var userExit = false;
       var userToAdd = await axios.get(`http://localhost:3001/users/${email}`);
       var thisUser =  await axios.get(`http://localhost:3001/users/${props.email}`);
       var thisUserEmail = thisUser.data.email;

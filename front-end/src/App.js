@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect } from 'react'
-import React from 'react';
+import { useContext, useState } from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // Local
@@ -19,8 +18,6 @@ import {
   Redirect,
   useLocation
 } from "react-router-dom"
-
-const { v4: uuid } = require('uuid')
 
 const styles = {
   root: {

@@ -1,10 +1,9 @@
-import { Button, Checkbox, TextField } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import Context from './Context'
-import { useContext, useState } from 'react'
+import {useState } from 'react'
 import store from 'store'
 import axios from 'axios';
 
@@ -18,16 +17,11 @@ const useStyles = (theme) => ({
 })
 
 export default ({props}) => {
-    const {
-    oauth, setOauth
-  } = useContext(Context)
 
   const BackToMenu = () => {
     window.location="/";
   };
   const styles = useStyles(useTheme());
-
-  const [email, setEmail] = useState(props.email);
   const [name, setName] = useState(props.userName);
   const [gravatarUrl, setGravatarUrl] = useState(props.img);
 
@@ -71,13 +65,13 @@ export default ({props}) => {
         </Box>
         <Box m={1} p={1}>
           <Button onClick={changePictureOne}>
-            <img src="https://octodex.github.com/images/dojocat.jpg" style={{width:'60px'}}></img>
+            <img src="https://octodex.github.com/images/dojocat.jpg" style={{width:'60px'}} alt="image1"></img>
           </Button>
           <Button onClick={changePictureTwo}>
-            <img src="https://octodex.github.com/images/gracehoppertocat.jpg" style={{width:'60px'}}></img>
+            <img src="https://octodex.github.com/images/gracehoppertocat.jpg" style={{width:'60px'}} alt="image2"></img>
           </Button>
           <Button onClick={changePictureThree}>
-            <img src="https://noahnyy.github.io/assets/img/sample/avatar.jpg" style={{width:'60px'}}></img>
+            <img src="https://noahnyy.github.io/assets/img/sample/avatar.jpg" style={{width:'60px'}} alt="image3"></img>
           </Button>
         </Box>
         <Box m={1} p={1}>

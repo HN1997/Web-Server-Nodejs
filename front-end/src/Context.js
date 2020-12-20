@@ -14,7 +14,7 @@ export const Provider = ({
   const [drawerVisible, setDrawerVisible] = useState(false)
   const [channels, setChannels] = useState([])
   const [currentChannel, setCurrentChannel] = useState(null)
-  const [user, setUser] = useState(
+  const [user] = useState(
     {
         img: "https://i.stack.imgur.com/frlIf.png",
         userName: "defautUserName",

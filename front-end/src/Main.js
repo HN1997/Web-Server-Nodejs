@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react'
+import {useContext} from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 // Layout
@@ -50,7 +50,6 @@ const useStyles = (theme) => ({
 
 export default ({props}) => {
   const {
-    currentChannel,
     drawerVisible,
   } = useContext(Context)
   const theme = useTheme()
@@ -62,15 +61,13 @@ export default ({props}) => {
     var channelName = prompt("Name of the new channel :");
     var email = [] 
     email.push(props.email)
-    console.log("le tableau :")
-    console.log(email)
     if(channelName===null || channelName===""){
       const txt = "Error, can't create a channel with an empty name.";
       alert(txt);
     }
     else if(channelName!==null || channelName!==""){
       const txt = channelName;
-      const {data: {id}} = await axios.post('http://localhost:3001/channels', {
+      await axios.post('http://localhost:3001/channels', {
             name: txt,
             emails: email
       })
