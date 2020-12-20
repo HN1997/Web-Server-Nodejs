@@ -66,11 +66,11 @@ app.delete('/messages/:id/:idmsg', async (req, res) => {
   const message = await db.messages.delete(req.params.id,req.params.idmsg)
   res.json(message)
 })
-app.put('/messages/:id', async (req, res) => {
+app.put('/messages/:id/:idmsg', async (req, res) => {
   //console.log("app")
   //console.log(req.params.id)
   //console.log(req.body)
-  const message = await db.messages.update(req.params.id,req.body)
+  const message = await db.messages.update(req.params.id,req.params.idmsg,req.body)
   res.json(message)
 })
 
