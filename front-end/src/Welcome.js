@@ -1,45 +1,13 @@
 import {} from 'react';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-// Layout
-import { useTheme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography'
-
-const useStyles = (theme) => ({
-  root: {
-    height: '100%',
-    flex: '1 1 auto',
-    display: 'flex',
-    // background: 'rgba(0,0,0,.2)',
-  },
-  card: {
-    textAlign: 'center',
-  },
-  icon: {
-    width: '20%',
-    fill: '#69bdd2',
-  }
-})
 
 export default () => {
-  const styles = useStyles(useTheme())
   return (
-    <div css={styles.root}>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
-        spacing={5}
-      >
-        <Typography variant="h6" color="secondary">Welcome to the chat!</Typography>
-        <Typography>You can change your setting by clicking your profile picture.</Typography>
-        <Typography>The list of your channels are on the left.</Typography>
-        <Typography>Add a new Channel by clicking the button "CREATE A CHANNEL".</Typography>
-        <Typography>In a channel, you can add a new friend !</Typography>
-        <Typography>You can send a message and modify or delete your own message.</Typography>
-      </Grid>
-    </div>
+<div className="col-sm-max col-md-max col-lg-max"> 
+  <h4>Welcome&nbsp;to&nbsp;Ece-chat&nbsp;the&nbsp;Web&nbsp;application&nbsp;<br /></h4>
+  <p><strong><em>This&nbsp;application&nbsp;was&nbsp;programmed&nbsp;by&nbsp;Hugo&nbsp;Navillod&nbsp;and&nbsp;Pierre&nbsp;Camugli&nbsp;</em></strong><br /><strong><em>using&nbsp;as&nbsp;a&nbsp;template&nbsp;the&nbsp;code&nbsp;written&nbsp;by&nbsp;David&nbsp;Worms</em></strong><br /></p>
+  <p><strong>#Creating a chat!</strong><br />Here&nbsp;you&nbsp;can&nbsp;chat with&nbsp;your&nbsp;friends. <br />To&nbsp;do&nbsp;so,&nbsp;create&nbsp;a&nbsp;channel&nbsp;using&nbsp;the&nbsp;button&nbsp;on&nbsp;the&nbsp;bottom&nbsp;left&nbsp;of&nbsp;your&nbsp;screen. Then&nbsp;get&nbsp;in&nbsp;that&nbsp;channel. There&nbsp;you&nbsp;can&nbsp;write&nbsp;messages.&nbsp;But&nbsp;your&nbsp;messages&nbsp;or&nbsp;yet&nbsp;to&nbsp;be&nbsp;seen&nbsp;by&nbsp;anyone.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><strong>#Allow your friend to join!</strong><br />To&nbsp;allow&nbsp;your&nbsp;friends&nbsp;to&nbsp;join&nbsp;you&nbsp;you&nbsp;can&nbsp;use&nbsp;the&nbsp;button&nbsp;at&nbsp;the&nbsp;bottom&nbsp;of&nbsp;your&nbsp;screen.&nbsp;<br />A pop-up&nbsp;will&nbsp;show&nbsp;up,&nbsp;put&nbsp;your&nbsp;friend's&nbsp;email&nbsp;address&nbsp;there. <br />If&nbsp;your&nbsp;friend&nbsp;never&nbsp;went&nbsp;on&nbsp;the&nbsp;website&nbsp;send&nbsp;him&nbsp;the&nbsp;link! If&nbsp;he&nbsp;already&nbsp;ent&nbsp;on&nbsp;the&nbsp;app&nbsp;he&nbsp;will&nbsp;now&nbsp;be&nbsp;able&nbsp;to&nbsp;see&nbsp;the&nbsp;channel&nbsp;in&nbsp;his&nbsp;list&nbsp;on&nbsp;the&nbsp;left&nbsp;as&nbsp;you&nbsp;do.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />You&nbsp;are&nbsp;now&nbsp;able&nbsp;to&nbsp;talk&nbsp;to&nbsp;each&nbsp;other!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br /><strong>#Add your friends in channels</strong><br />You&nbsp;can&nbsp;add&nbsp;as&nbsp;many&nbsp;friends&nbsp;as&nbsp;you&nbsp;want&nbsp;in&nbsp;your&nbsp;channels.&nbsp;The&nbsp;sky&nbsp;is&nbsp;the&nbsp;limit!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />You&nbsp;can&nbsp;even&nbsp;add&nbsp;your&nbsp;friends&nbsp;to&nbsp;a&nbsp;channel&nbsp;you've&nbsp;been&nbsp;invited&nbsp;in&nbsp;!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />So&nbsp;you&nbsp;can&nbsp;make&nbsp;your&nbsp;friends&nbsp;connect&nbsp;with&nbsp;some&nbsp;of&nbsp;your&nbsp;friends'&nbsp;friends&nbsp;and&nbsp;meet&nbsp;some&nbsp;new&nbsp;people!<br /><strong>#Change avatar and username</strong><br />You&nbsp;can&nbsp;also&nbsp;change&nbsp;your&nbsp;avatar&nbsp;and&nbsp;your&nbsp;username&nbsp;!To&nbsp;do&nbsp;so&nbsp;you&nbsp;click&nbsp;on&nbsp;your&nbsp;avatar&nbsp;at&nbsp;the&nbsp;top!<br />There&nbsp;complete&nbsp;the&nbsp;form&nbsp;and&nbsp;don't&nbsp;forget&nbsp;to&nbsp;save&nbsp;your&nbsp;changes!<br /><strong>#Delete message</strong><br />If&nbsp;you&nbsp;sent&nbsp;the&nbsp;wrong&nbsp;text&nbsp;to&nbsp;the&nbsp;wrong&nbsp;person&nbsp;you&nbsp;can&nbsp;still&nbsp;save&nbsp;the&nbsp;day&nbsp;<br />because&nbsp;Ecechat&nbsp;allows&nbsp;you&nbsp;to&nbsp;change&nbsp;and&nbsp;even&nbsp;delete&nbsp;themessages&nbsp;that&nbsp;you&nbsp;sent!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />Click&nbsp;on&nbsp;the&nbsp;icons&nbsp;near&nbsp;the&nbsp;message&nbsp;you&nbsp;want&nbsp;to&nbsp;handle&nbsp;and&nbsp;here&nbsp;you&nbsp;go!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />Yet&nbsp;you&nbsp;are&nbsp;not&nbsp;a&nbsp;wizard&nbsp;so&nbsp;you&nbsp;can't&nbsp;modify&nbsp;or&nbsp;delete&nbsp;the&nbsp;messages&nbsp;of&nbsp;your&nbsp;friends!<br /></p>
+</div>
   );
 }
