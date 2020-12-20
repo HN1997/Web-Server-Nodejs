@@ -61,6 +61,8 @@ export default ({props}) => {
     var channelName = prompt("Name of the new channel :");
     var email = [] 
     email.push(props.email)
+    //console.log("le tableau :")
+    //console.log(email)
     if(channelName===null || channelName===""){
       const txt = "Error, can't create a channel with an empty name.";
       alert(txt);
