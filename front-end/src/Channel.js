@@ -110,6 +110,7 @@ export default ({props}) => {
         messages={messages}
         onScrollDown={onScrollDown}
         ref={listRef}
+        props={props}
       />
         <Form addMessage={addMessage} channel={channel} />
       <Fab

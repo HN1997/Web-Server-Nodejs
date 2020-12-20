@@ -8,10 +8,13 @@ import unified from 'unified'
 import markdown from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import html from 'rehype-stringify'
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 // Time
 import dayjs from 'dayjs'
 import calendar from 'dayjs/plugin/calendar'
 import updateLocale from 'dayjs/plugin/updateLocale'
+import { Button } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 dayjs.extend(calendar)
 dayjs.extend(updateLocale)
 dayjs.updateLocale('en', {
@@ -58,6 +61,7 @@ export default forwardRef(({
   channel,
   messages,
   onScrollDown,
+  props
 }, ref) => {
   const styles = useStyles(useTheme())
   // Expose the `scroll` action
@@ -99,9 +103,11 @@ export default forwardRef(({
             return (
               <li key={i} css={styles.message}>
                 <p>
-                  <span>{message.author}</span>
+                  <span>{props.userName}</span>
                   {' - '}
                   <span>{dayjs().calendar(message.creation)}</span>
+                  <Button><DeleteIcon style={{width:'40px'}}></DeleteIcon></Button>
+                  <Button><ChatBubbleIcon style={{width:'40px'}}></ChatBubbleIcon></Button>
                 </p>
                 <div dangerouslySetInnerHTML={{__html: content}}>
                 </div>
