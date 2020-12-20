@@ -51,7 +51,7 @@ export default ({
   }
   const AddGravatar = () => {
     window.location="/ChangeSettings";
-  };
+  }
   const curUser = store.get('user');
   
   return (

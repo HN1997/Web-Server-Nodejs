@@ -1,4 +1,4 @@
-#!/bin/env node
+#!env node
 
 const app = require('../lib/app')
 const config = {
@@ -6,5 +6,5 @@ const config = {
 }
 
 app.listen(config.port, () => {
-  console.log(`Chat is waiting for you at http://localhost:${config.port}`)
+  console.log(`Chat is waiting for you at http://127.0.0.1:${config.port}`)
 })
