@@ -1,4 +1,4 @@
-import {useContext, useRef, useState} from 'react';
+import {useContext, useRef, useState, useEffect} from 'react';
 import axios from 'axios';
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
@@ -90,10 +90,18 @@ export default ({props}) => {
       }
       //Il peut ajouter un nouvel user
       else{
+        await axios.put(`http://localhost:3001/channels/${idCurrentChannel}`,
+        {
+          email: userToAdd.data.email
+        })
         alert(`User ${userToAdd.data.email} added to the chat!`);
       }
     }
   }
+  
+  var locationActuelle = window.location.pathname;
+  var paths = locationActuelle.split("/");
+  var idCurrentChannel = paths[2];
   
   return (
     <div css={styles.root}>
