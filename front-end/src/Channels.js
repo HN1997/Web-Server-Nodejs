@@ -33,13 +33,18 @@ export default () => {
   useEffect( () => {
     const fetch = async () => {
       try{
-        //console.log(oauth.access_token)
-        const {data: channels} = await axios.get('http://localhost:3001/channels', {
+        
+        const {data: channels} = await axios.get('http://localhost:3001/channels', 
+        {
+          data:{
+            useremail:`${oauth.email}`
+            },
+
           headers: {
-            'Authorization': `Bearer ${oauth.access_token}`
-            
-          }
+            'Authorization':`Bearer ${oauth.access_token}`
+            }
         })
+
         setChannels(channels)
       }catch(err){
         console.error(err)
